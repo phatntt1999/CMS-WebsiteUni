@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.bo.CreateProductBO;
+import model.bo.AddArticleBO;
 
 /**
  * Servlet implementation class AddingArticleServlet
@@ -47,13 +47,14 @@ public class AddingArticleServlet extends HttpServlet {
 		if (session.getAttribute("accountInfor") == null) {
 			response.sendRedirect("login.jsp?error=1");
 		} else {
+			String role = (String)session.getAttribute("accountInfor");
 			String articleName = request.getParameter("articleName");
 			String dateUpload = request.getParameter("dateUpload");
 			String fileUpload = request.getParameter("fileUpload");
 			
 			AddArticleBO addArticleBO = new AddArticleBO();
 			//Bắt Lỗi từ DAO gửi sang BO thông qua String
-			String returnedMessage = addArticleBO.insertProduct(articleName, dateUpload, fileUpload);
+			String returnedMessage = addArticleBO.insertProduct(role, articleName, dateUpload, fileUpload);
 			
 			RequestDispatcher rd = null;
 			

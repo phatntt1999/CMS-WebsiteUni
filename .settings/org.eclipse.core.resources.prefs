@@ -1,2 +1,4 @@
 eclipse.preferences.version=1
+encoding//src/common/StringCommon.java=UTF-8
 encoding//src/controller/AddingArticleServlet.java=UTF-8
+encoding//src/model/bo/AddArticleBO.java=UTF-8
