@@ -62,16 +62,19 @@ public class CheckLoginServlet extends HttpServlet {
 		else if(checkLoginBO.getAccountRole(userName, passWord) == ADMIN_ACCOUNT)	{
 			accountInfor = userName + " (admin)";
 			session.setAttribute("accountInfor", accountInfor);
+			session.setAttribute("userName", userName);
 			rd = request.getRequestDispatcher("welcomeAdmin.jsp");
 		}
 		else if (checkLoginBO.getAccountRole(userName, passWord) == MANAGER_ACCOUNT){
 			accountInfor = userName + " (manager)";
-			session.setAttribute("accountInfor", accountInfor);	
+			session.setAttribute("accountInfor", accountInfor);
+			session.setAttribute("userName", userName);
 			rd = request.getRequestDispatcher("welcomeManager.jsp");
 		}
 		else {
 			accountInfor = userName + " (coordinator)";
-			session.setAttribute("accountInfor", accountInfor);	
+			session.setAttribute("accountInfor", accountInfor);
+			session.setAttribute("userName", userName);
 			rd = request.getRequestDispatcher("welcomeCoordinator.jsp");
 		}
 		

@@ -47,14 +47,14 @@ public class AddingArticleServlet extends HttpServlet {
 		if (session.getAttribute("accountInfor") == null) {
 			response.sendRedirect("login.jsp?error=1");
 		} else {
-			String role = (String)session.getAttribute("accountInfor");
+			String userName = (String)session.getAttribute("userName");
 			String articleName = request.getParameter("articleName");
 			String dateUpload = request.getParameter("dateUpload");
 			String fileUpload = request.getParameter("fileUpload");
 			
 			AddArticleBO addArticleBO = new AddArticleBO();
 			//Bắt Lỗi từ DAO gửi sang BO thông qua String
-			String returnedMessage = addArticleBO.insertProduct(role, articleName, dateUpload, fileUpload);
+			String returnedMessage = addArticleBO.insertProduct(userName, articleName, dateUpload, fileUpload);
 			
 			RequestDispatcher rd = null;
 			
@@ -63,28 +63,28 @@ public class AddingArticleServlet extends HttpServlet {
 				// Thêm mới thành công
 				
 				rd = request
-						.getRequestDispatcher("ShowProductListServlet?message=2");
+						.getRequestDispatcher("ShowArticleServlet?message=2");
 
 			} else if ("Duplicate ID Error".equals(returnedMessage)) {
 				// Lỗi trùng mã hàng hóa
 				
 				rd = request
-						.getRequestDispatcher("ShowCreateProductServlet?message=1");
+						.getRequestDispatcher("ShowAddingServlet?message=1");
 			
 			} else if ("Required Fields error.".equals(returnedMessage)) {
 				// Lỗi thiếu thông tin các field bắt buộc nhập
 				
 				rd = request
-						.getRequestDispatcher("ShowCreateProductServlet?message=3");
+						.getRequestDispatcher("ShowAddingServlet?message=3");
 			} else if ("Invalid DGTK error.".equals(returnedMessage)) {
 				rd = request
-						.getRequestDispatcher("ShowCreateProductServlet?message=4");
+						.getRequestDispatcher("ShowAddingServlet?message=4");
 			}
 			else {
 				// Lỗi không xác định
 
 				rd = request
-						.getRequestDispatcher("ShowCreateProductServlet?message=2");
+						.getRequestDispatcher("ShowAddingServlet?message=2");
 			}
 			rd.forward(request, response);
 		}

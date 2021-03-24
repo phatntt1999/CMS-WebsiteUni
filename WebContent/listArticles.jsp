@@ -25,6 +25,15 @@
            else {
        %>
        <%-- //End check login status --%>
+       
+       <%-- Print status when delete, add and edit --%>
+       <%
+       		String error = request.getParameter("message");
+       %>
+       <%= ("1".equals(error)? "Đã xóa thành công!" : "") %>
+       <%= ("2".equals(error)? "Thêm mới thành công!" : "") %>
+       <%-- <%= ("3".equals(error)? "Chỉnh sửa thành công!" : "") %> --%>
+       <%-- //End Print status when delete, add and edit --%>
 
 
 	<div class="container-fluid">
@@ -71,9 +80,9 @@
 							<td><%= Ar.getId_Coordinator() %></td>
 							<td><input type="button"
 								Onclick="location.href='ShowEditProductServlet?arId=<%=Ar.getid_Articles()%>'"
-								value="Chỉnh sửa" /> <input type="button"
-								Onclick="deleteProduct('<%=Ar.getid_Articles()%>')" value="Xóa" /> <a
-								href="DeleteProductServlet?proId=<%= Ar.getid_Articles()%>"
+								value="Chỉnh sửa" /> 
+								<input type="button" Onclick="deleteProduct('<%=Ar.getid_Articles()%>')" value="Xóa"/><a
+								href="DeleteArticleServlet?arId=<%=Ar.getid_Articles()%>"
 								Onclick="return confirm('Do you want to delete?')">Delete</a></td>
 							<% stt +=1; %>
 						</tr>

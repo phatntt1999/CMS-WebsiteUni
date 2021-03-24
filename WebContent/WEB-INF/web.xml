@@ -59,4 +59,14 @@
     <servlet-name>AddingArticleServlet</servlet-name>
     <url-pattern>/AddingArticleServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteArticleServlet</display-name>
+    <servlet-name>DeleteArticleServlet</servlet-name>
+    <servlet-class>controller.DeleteArticleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteArticleServlet</servlet-name>
+    <url-pattern>/DeleteArticleServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

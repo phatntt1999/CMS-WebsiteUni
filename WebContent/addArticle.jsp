@@ -33,15 +33,14 @@
 	        Article Name: <input type="text" name="articleName" id="articleName">
 	        Date upload: <input type="date" name="dateUpload" id="dateUpload">
 	        Upload File: <input type="text" name="fileUpload" id="fileUpload">
-	      
-	        <input type="submit" onclick="return false" value="Submit">
+	        <input type="submit" value="Submit">
 	        <input type="reset" value="Cancel">
 	    </form>
 	    
 	    <script>
-	    $(document).ready( function() {
+	    /* $(document).ready( function() {
 	        $('#dateupload').val(new Date().toDateInputValue());
-	    });​
+	    }); */​
 	    </script>
 	    <% } %>
 	</body>
