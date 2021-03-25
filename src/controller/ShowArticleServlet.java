@@ -62,7 +62,7 @@ public class ShowArticleServlet extends HttpServlet {
 			
 			RequestDispatcher rd = null;
 			rd = request.getServletContext()
-					.getRequestDispatcher("/listArticles.jsp");
+					.getRequestDispatcher("/homePage.jsp");
 			rd.forward(request, response);
 		}
 	}
