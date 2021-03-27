@@ -57,11 +57,11 @@ public class AddArticleDAO extends BaseDAO {
 		return Department;
 	}
 
-	public String insertArticle(String lastestId_Article, String articleName, String dateUpload,
+	public String insertArticle(String lastestId_Article, String articleName,
 			String id_Faculty, String id_Author, String id_Coordinator, boolean published, boolean isNow, String fileUpload) {
 		Connection connection = getConnection();
-		String sql = "INSERT INTO Articles (id_Articles,ArticleName,Date_upload,id_Faculty"
-		+ ",id_Author, id_Coordinator, Published, isNow, FileUpload) VALUES (?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO Articles (id_Articles,ArticleName,id_Faculty"
+		+ ",id_Author, id_Coordinator, Published, isNow, FileUpload) VALUES (?,?,?,?,?,?,?,?)";
 
 		PreparedStatement pstmt = null;
 
@@ -69,13 +69,12 @@ public class AddArticleDAO extends BaseDAO {
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setString(1, lastestId_Article);
 			pstmt.setString(2, articleName);
-			pstmt.setString(3, dateUpload);
-			pstmt.setString(4, id_Faculty);
-			pstmt.setString(5, id_Author);
-			pstmt.setString(6, id_Coordinator);
-			pstmt.setBoolean(7, published);
-			pstmt.setBoolean(8, isNow);
-			pstmt.setString(9, fileUpload);
+			pstmt.setString(3, id_Faculty);
+			pstmt.setString(4, id_Author);
+			pstmt.setString(5, id_Coordinator);
+			pstmt.setBoolean(6, published);
+			pstmt.setBoolean(7, isNow);
+			pstmt.setString(8, fileUpload);
 
 			int x = pstmt.executeUpdate();
 			System.out.println("Đã chèn số record: " + x);

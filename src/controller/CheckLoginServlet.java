@@ -50,33 +50,49 @@ public class CheckLoginServlet extends HttpServlet {
 		final int INVALID_ACCOUNT = 0;
 		final int ADMIN_ACCOUNT = 1;
 		final int MANAGER_ACCOUNT = 2;
+		final int COORDINATORBIZ = 3;
+		final int COORDINATORIT = 4;
+		final int COORDINATORDS = 5;
 		
 		String accountInfor = null;
 		HttpSession session = request.getSession();
 		
 		RequestDispatcher rd = null;
+		accountInfor = "Welcome! " + userName;
 		
 		if(checkLoginBO.getAccountRole(userName, passWord) == INVALID_ACCOUNT)	{
 			rd = request.getRequestDispatcher("login.jsp?error=2");
-		}
+		} //Invalid account
 		else if(checkLoginBO.getAccountRole(userName, passWord) == ADMIN_ACCOUNT)	{
-			accountInfor = userName + " (admin)";
 			session.setAttribute("accountInfor", accountInfor);
 			session.setAttribute("userName", userName);
 			rd = request.getRequestDispatcher("welcomeAdmin.jsp");
-		}
+		} //Admin role
 		else if (checkLoginBO.getAccountRole(userName, passWord) == MANAGER_ACCOUNT){
-			accountInfor = userName + " (manager)";
 			session.setAttribute("accountInfor", accountInfor);
 			session.setAttribute("userName", userName);
-			rd = request.getRequestDispatcher("welcomeManager.jsp");
-		}
-		else {
-			accountInfor = userName + " (coordinator)";
+			rd = request.getRequestDispatcher("ShowArticleServlet");
+		} //Manager role
+		else if (checkLoginBO.getAccountRole(userName, passWord) == COORDINATORBIZ){
 			session.setAttribute("accountInfor", accountInfor);
 			session.setAttribute("userName", userName);
 			rd = request.getRequestDispatcher("welcomeCoordinator.jsp");
-		}
+		} //Coordinator Business role
+		else if (checkLoginBO.getAccountRole(userName, passWord) == COORDINATORIT){
+			session.setAttribute("accountInfor", accountInfor);
+			session.setAttribute("userName", userName);
+			rd = request.getRequestDispatcher("welcomeCoordinator.jsp");
+		} //Coordinator IT role
+		else if (checkLoginBO.getAccountRole(userName, passWord) == COORDINATORDS){
+			session.setAttribute("accountInfor", accountInfor);
+			session.setAttribute("userName", userName);
+			rd = request.getRequestDispatcher("welcomeCoordinator.jsp");
+		} //Coordinator Design role
+		else {
+			session.setAttribute("accountInfor", accountInfor);
+			session.setAttribute("userName", userName);
+			rd = request.getRequestDispatcher("welcomeUser.jsp");
+		} //Coordinator Design role
 		
 		rd.forward(request, response);
 	}

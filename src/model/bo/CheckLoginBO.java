@@ -9,5 +9,6 @@ public class CheckLoginBO {
 	public int getAccountRole(String userName, String passWord) {
 		return checkLoginDAO.getAccountRole(userName, passWord);
 	}
+
 	
 }

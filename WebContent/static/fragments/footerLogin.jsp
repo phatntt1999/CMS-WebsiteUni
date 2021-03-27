@@ -1,15 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="static/css/bootstrap.min.css">
-<link rel="stylesheet" href="static/css/homepage.css">
-<script src="static/js/bootstrap.min.js"></script>
 
+<!-- <link rel="stylesheet" href="static/css/bootstrap.min.css">
+<link rel="stylesheet" href="static/css/homepage.css">
+<script src="static/js/bootstrap.min.js"></script> -->
+
+<title>Home page</title>
 </head>
+
 <footer style="background-color: rgb(228, 228, 228);">
 	<div class="container" style="padding-top: 20px; margin-top: 15px;">
 		<div class="row">
@@ -62,3 +67,5 @@
 		</div>
 	</div>
 </footer>
+
+</html>

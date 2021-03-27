@@ -49,12 +49,11 @@ public class AddingArticleServlet extends HttpServlet {
 		} else {
 			String userName = (String)session.getAttribute("userName");
 			String articleName = request.getParameter("articleName");
-			String dateUpload = request.getParameter("dateUpload");
 			String fileUpload = request.getParameter("fileUpload");
 			
 			AddArticleBO addArticleBO = new AddArticleBO();
 			//Bắt Lỗi từ DAO gửi sang BO thông qua String
-			String returnedMessage = addArticleBO.insertProduct(userName, articleName, dateUpload, fileUpload);
+			String returnedMessage = addArticleBO.insertProduct(userName, articleName, fileUpload);
 			
 			RequestDispatcher rd = null;
 			

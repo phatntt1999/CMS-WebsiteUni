@@ -31,7 +31,6 @@
 	    <form action="AddingArticleServlet" method="post">
 	        <!-- Mã hàng: <input type="text" name="maHH"> -->
 	        Article Name: <input type="text" name="articleName" id="articleName">
-	        Date upload: <input type="date" name="dateUpload" id="dateUpload">
 	        Upload File: <input type="text" name="fileUpload" id="fileUpload">
 	        <input type="submit" value="Submit">
 	        <input type="reset" value="Cancel">

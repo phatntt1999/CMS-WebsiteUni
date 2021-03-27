@@ -9,6 +9,7 @@ public class Article {
 	private String id_Coordinator;
 	private boolean Published;
 	private boolean IsNow;
+	private boolean StatusComment;
 	
 	public String getid_Articles() {
 		return id_Articles;
@@ -48,17 +49,23 @@ public class Article {
 	public void setId_Coordinator(String id_Coordinator) {
 		this.id_Coordinator = id_Coordinator;
 	}
-	public boolean isPublished() {
+	public boolean getPublished() {
 		return Published;
 	}
 	public void setPublished(boolean published) {
 		Published = published;
 	}
-	public boolean isIsNow() {
+	public boolean getIsNow() {
 		return IsNow;
 	}
 	public void setIsNow(boolean isNow) {
 		IsNow = isNow;
+	}
+	public boolean getStatusComment() {
+		return StatusComment;
+	}
+	public void setStatusComment(boolean statusComment) {
+		StatusComment = statusComment;
 	}
 	
 	

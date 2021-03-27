@@ -11,9 +11,24 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="static/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="static/css/bootstrap.min.css"> -->
 <link rel="stylesheet" href="static/css/homepage.css">
-<script src="static/js/bootstrap.min.js"></script>
+<!-- <script src="static/js/bootstrap.min.js"></script> -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"
+	integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"
+	integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG"
+	crossorigin="anonymous"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <title>Home page</title>
 </head>
@@ -97,39 +112,37 @@
 				value="Add" />
 			<% ArrayList<Article> listArticle = (ArrayList<Article>)request.getAttribute("listArticle"); %>
 			<%-- Logic handling show product list --%>
-
-			<% for (int i = 1; i < 5; i++) { %>
+			<%int count = 0; %>
+			<%-- <% for (Article Ar : listArticle) { %> --%>
+			<% for (int j = 1; j < 4; j++) { %>
 			<div class="row" style="padding-bottom: 30px;">
-			<% for (Article Ar : listArticle) { %>
-				<% for (int count = 1; count < 4; count++) { %>
+				<% for (int i = 1; i < 4; i++) { %>
 				<div class="col">
 					<a href="#" class="post"> <img src="static/images/post.jpg"
 						alt="" class="post-image">
 					</a><br> <a href="#" class="post"> <span
-						style="font-size: larger; font-weight: bold;"><%=Ar.getArticleName()%></span>
-					</a> <br> <span>Date upload: <%=Ar.getDate_upload()%></span> <br>
-					<img src="static/images/avatar.jpg" alt="" class="avatar-image">
-					<span class="author-text">Author: <%=Ar.getId_Author()%></span><br><br>
-					<input type="button"
-						Onclick="location.href='ShowEditProductServlet?arId=<%=Ar.getid_Articles()%>'"
+						style="font-size: larger; font-weight: bold;"><%=listArticle.get(count).getArticleName()%></span>
+					</a> <br> <span>Date upload: <%=listArticle.get(count).getDate_upload()%></span>
+					<br> <img src="static/images/avatar.jpg" alt=""
+						class="avatar-image"> <span class="author-text">Author:
+						<%=listArticle.get(count).getId_Author()%></span><br>
+					<br> <input type="button"
+						Onclick="location.href='ShowEditProductServlet?arId=<%=listArticle.get(count).getid_Articles()%>'"
 						value="Chỉnh sửa" /> <a
-						href="DeleteArticleServlet?arId=<%=Ar.getid_Articles()%>"
-						Onclick="return confirm('Do you want to delete?')">Delete</a>
+						href="DeleteArticleServlet?arId=<%=listArticle.get(count).getid_Articles()%>"
+						Onclick="return confirm('Do you want to delete?')">Delete</a> <br>
 					<br>
-					<br>
-
 				</div>
+				<% count++; %>
 				<%
 					}
 				%>
 				<%
 					}
 				%>
-			<%
-				}
-			%>
 
-			<%-- Close for loop --%>
+
+				<%-- Close for loop --%>
 				<%-- //End Logic handling show product list --%>
 			</div>
 

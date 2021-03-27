@@ -25,7 +25,7 @@ public class AddArticleBO {
 		return null;
 	}
 
-	public String insertProduct(String userName, String articleName, String dateUpload, String fileUpload) {
+	public String insertProduct(String userName, String articleName, String fileUpload) {
 		// TODO Auto-generated method stub
 		// Lặp tối đa 10 lần để xử lỗi trùng MaHH
 		for (int i = 1; i <= 10; i++) {
@@ -71,8 +71,7 @@ public class AddArticleBO {
 			
 			// Truyền mã Article mới vào trong AddArticleDAO.insertArticle
 			String returnedMessage = addArticleDAO.insertArticle
-					(lastestId_Article, articleName, dateUpload, 
-							id_Faculty, id_Author, id_Coordinator, Published, isNow, fileUpload);
+					(lastestId_Article, articleName, id_Faculty, id_Author, id_Coordinator, Published, isNow, fileUpload);
 
 			if ("Duplicate ID Error.".contentEquals(returnedMessage)) {
 				returnedString = "Duplicate ID Error";

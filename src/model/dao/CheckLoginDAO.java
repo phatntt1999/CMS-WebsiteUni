@@ -23,9 +23,16 @@ public class CheckLoginDAO extends BaseDAO {
 					return 1; // Admin
 				} else if ("manager".equals(rs.getString("Rolekey"))) {
 					return 2; // Manager
-				}
-				else {
-					return 3; // Coordinator
+				} else if ("user".equals(rs.getString("Rolekey"))) {
+					return 6; // User
+				} else { // Coordinator
+					if ("coordinatorbiz".equals(rs.getString("Rolekey"))) {
+						return 3; // Coordinator Business
+					} else if ("coordinatorit".equals(rs.getString("Rolekey"))) {
+						return 4; // Coordinator IT
+					} else {
+						return 5; // Coordinator Design
+					}
 				}
 			} else {
 				return 0;  // invalid account

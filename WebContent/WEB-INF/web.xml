@@ -69,4 +69,34 @@
     <servlet-name>DeleteArticleServlet</servlet-name>
     <url-pattern>/DeleteArticleServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShowDetailArticleServlet</display-name>
+    <servlet-name>ShowDetailArticleServlet</servlet-name>
+    <servlet-class>controller.ShowDetailArticleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowDetailArticleServlet</servlet-name>
+    <url-pattern>/ShowDetailArticleServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShowListCommentServlet</display-name>
+    <servlet-name>ShowListCommentServlet</servlet-name>
+    <servlet-class>controller.ShowListCommentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowListCommentServlet</servlet-name>
+    <url-pattern>/ShowListCommentServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddCommentServlet</display-name>
+    <servlet-name>AddCommentServlet</servlet-name>
+    <servlet-class>controller.AddCommentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddCommentServlet</servlet-name>
+    <url-pattern>/AddCommentServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
