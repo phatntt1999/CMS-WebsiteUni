@@ -59,36 +59,43 @@ public class CheckLoginServlet extends HttpServlet {
 		
 		RequestDispatcher rd = null;
 		accountInfor = "Welcome! " + userName;
+		String account = userName;
 		
 		if(checkLoginBO.getAccountRole(userName, passWord) == INVALID_ACCOUNT)	{
 			rd = request.getRequestDispatcher("login.jsp?error=2");
 		} //Invalid account
 		else if(checkLoginBO.getAccountRole(userName, passWord) == ADMIN_ACCOUNT)	{
+			session.setAttribute("account", account);
 			session.setAttribute("accountInfor", accountInfor);
 			session.setAttribute("userName", userName);
 			rd = request.getRequestDispatcher("welcomeAdmin.jsp");
 		} //Admin role
 		else if (checkLoginBO.getAccountRole(userName, passWord) == MANAGER_ACCOUNT){
+			session.setAttribute("account", account);
 			session.setAttribute("accountInfor", accountInfor);
 			session.setAttribute("userName", userName);
 			rd = request.getRequestDispatcher("ShowArticleServlet");
 		} //Manager role
 		else if (checkLoginBO.getAccountRole(userName, passWord) == COORDINATORBIZ){
+			session.setAttribute("account", account);
 			session.setAttribute("accountInfor", accountInfor);
 			session.setAttribute("userName", userName);
 			rd = request.getRequestDispatcher("welcomeCoordinator.jsp");
 		} //Coordinator Business role
 		else if (checkLoginBO.getAccountRole(userName, passWord) == COORDINATORIT){
+			session.setAttribute("account", account);
 			session.setAttribute("accountInfor", accountInfor);
 			session.setAttribute("userName", userName);
 			rd = request.getRequestDispatcher("welcomeCoordinator.jsp");
 		} //Coordinator IT role
 		else if (checkLoginBO.getAccountRole(userName, passWord) == COORDINATORDS){
+			session.setAttribute("account", account);
 			session.setAttribute("accountInfor", accountInfor);
 			session.setAttribute("userName", userName);
 			rd = request.getRequestDispatcher("welcomeCoordinator.jsp");
 		} //Coordinator Design role
 		else {
+			session.setAttribute("account", account);
 			session.setAttribute("accountInfor", accountInfor);
 			session.setAttribute("userName", userName);
 			rd = request.getRequestDispatcher("welcomeUser.jsp");

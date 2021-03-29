@@ -17,18 +17,26 @@
 
 <body>
 	<%
-		ArrayList<Comment> comment = (ArrayList<Comment>)request.getAttribute("listComment");
+		ArrayList<Comment> comment = (ArrayList<Comment>) request.getAttribute("listComment");
 	%>
 	<%
-		ArrayList<Article> detailArticle = (ArrayList<Article>)request.getAttribute("detailArticle");
+		ArrayList<Article> detailArticle = (ArrayList<Article>) request.getAttribute("detailArticle");
 	%>
+	<%
+			for (Article DeAr : detailArticle) {
+	%>
+	<object
+		data="${pageContext.request.contextPath}/Linkfile/<%=DeAr.getFileUpload() %>"
+		type="application/pdf" style="width: 80%; height: 700px">
+		<a
+			href="${pageContext.request.contextPath}./Linkfile/<%=DeAr.getFileUpload() %>">Download
+			file.pdf</a>
+	</object>
 
 	<h1>Comment in here</h1>
 	<div>--------------------------------------</div>
 	<div class="comments-container">
-		<%
-			for (Article DeAr : detailArticle) {
-		%>
+
 
 		<%
 			if (DeAr.getStatusComment() == true) {
@@ -42,9 +50,8 @@
 			</h5>
 			<input name="nameAccount"
 				value="<%=(String) session.getAttribute("accountInfor")%>"></input>
-			<input name="arId"
-				value="<%=(String) session.getAttribute("arId")%>"></input> <input
-				type="text" name="comment" value="yourcomment"> <input
+			<input name="arId" value="<%=(String) session.getAttribute("arId")%>"></input>
+			<input type="text" name="comment" value="yourcomment"> <input
 				type="submit" value="Add Comment" />
 
 		</form>

@@ -11,7 +11,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- <link rel="stylesheet" href="static/css/bootstrap.min.css"> -->
+
+
+<link rel="stylesheet" href="bootstrap.min.css">
+
 <script
 	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"
 	integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi"
@@ -19,18 +22,21 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="static/css/homepage.css">
-<!-- <script src="static/js/bootstrap.min.js"></script> -->
+<script src="bootstrap.min.js"></script>
 <script src="static/js/welcome.js"></script>
 
-<title>Home page</title>
+<title>Manager Home page</title>
 </head>
 <header>
-	<%@ include file="static/fragments/header.html"%>
-	<%-- <jsp:include page="static/fragments/headerInLoginSession.jsp"></jsp:include> --%>
+	<%-- <%@ include file="static/fragments/header.html"%> --%>
+	<jsp:include page="static/fragments/headerInLoginSession.jsp"></jsp:include>
 </header>
 
 
 <body>
+	<%
+		ArrayList<Article> listArticle = (ArrayList<Article>) request.getAttribute("listArticle");
+	%>
 	<div class="container" style="padding-bottom: 30px;">
 		<div class="row"
 			style="background-color: rgb(191, 225, 248); padding: 70px;">
@@ -67,23 +73,35 @@
 				<div class="carousel-item active">
 					<img src="static/images/post.jpg" class="d-block w-100" alt="...">
 					<span
-						style="font-size: larger; font-weight: bold; padding-top: 20px;">Lorem
-						Ipsum</span><br> <span>Lorem ipsum dolor sit amet,
-						consectetur adipiscing elit.</span><br>
+						style="font-size: larger; font-weight: bold; padding-top: 20px;">
+						<%=listArticle.get(listArticle.size() - 2).getArticleName()%> <%
+ 	out.print(listArticle.size() - 2);
+ %>
+					</span><br> <span><%=listArticle.get(listArticle.size() - 2).getDate_upload()%>
+					</span><br> <span><%=listArticle.get(listArticle.size() - 2).getId_Author()%>
+					</span><br>
 				</div>
 				<div class="carousel-item">
 					<img src="static/images/post.jpg" class="d-block w-100" alt="...">
 					<span
-						style="font-size: larger; font-weight: bold; padding-top: 20px;">Lorem
-						Ipsum</span><br> <span>Lorem ipsum dolor sit amet,
-						consectetur adipiscing elit.</span><br>
+						style="font-size: larger; font-weight: bold; padding-top: 20px;">
+						<%=listArticle.get(listArticle.size() - 3).getArticleName()%> <%
+ 	out.print(listArticle.size() - 3);
+ %>
+					</span><br> <span><%=listArticle.get(listArticle.size() - 3).getDate_upload()%>
+					</span><br> <span><%=listArticle.get(listArticle.size() - 3).getId_Author()%>
+					</span><br>
 				</div>
 				<div class="carousel-item">
 					<img src="static/images/post.jpg" class="d-block w-100" alt="...">
 					<span
-						style="font-size: larger; font-weight: bold; padding-top: 20px;">Lorem
-						Ipsum</span><br> <span>Lorem ipsum dolor sit amet,
-						consectetur adipiscing elit.</span><br>
+						style="font-size: larger; font-weight: bold; padding-top: 20px;">
+						<%=listArticle.get(listArticle.size() - 4).getArticleName()%> <%
+ 	out.print(listArticle.size() - 4);
+ %>
+					</span><br> <span><%=listArticle.get(listArticle.size() - 4).getDate_upload()%>
+					</span><br> <span><%=listArticle.get(listArticle.size() - 4).getId_Author()%>
+					</span><br>
 				</div>
 			</div>
 			<button class="carousel-control-prev" type="button"
@@ -105,33 +123,43 @@
 			<hr>
 			<input type="button" onclick="location.href='ShowAddingServlet'"
 				value="Add" />
-			<% ArrayList<Article> listArticle = (ArrayList<Article>)request.getAttribute("listArticle"); %>
-
 
 			<%-- Logic handling show product list --%>
-			<%int count = 0; %>
+			<%
+				int count = 0;
+			%>
 
 			<%-- <% for (Article Ar : listArticle) { %> --%>
-			<% for (int j = 1; j < 4; j++) { %>
+			<%
+				for (int j = 1; j < 4; j++) {
+			%>
 			<div class="row" style="padding-bottom: 30px;">
-				<% for (int i = 1; i < 4; i++) { %>
+				<%
+					for (int i = 1; i < 4; i++) {
+				%>
 				<div class="col">
-					<a href="ShowDetailArticleServlet?arId=<%=listArticle.get(count).getid_Articles()%>" class="post"> <img src="static/images/post.jpg"
-						alt="" class="post-image">
-					</a><br> <a href="ShowDetailArticleServlet?arId=<%=listArticle.get(count).getid_Articles()%>" class="post"> <span
+					<a
+						href="ShowDetailArticleServlet?arId=<%=listArticle.get(count).getid_Articles()%>"
+						class="post"> <img src="static/images/post.jpg" alt=""
+						class="post-image">
+					</a><br> <a
+						href="ShowDetailArticleServlet?arId=<%=listArticle.get(count).getid_Articles()%>"
+						class="post"> <span
 						style="font-size: larger; font-weight: bold;"><%=listArticle.get(count).getArticleName()%></span>
 					</a> <br> <span>Date upload: <%=listArticle.get(count).getDate_upload()%></span>
 					<br> <img src="static/images/avatar.jpg" alt=""
 						class="avatar-image"> <span class="author-text">Author:
-						<%=listArticle.get(count).getId_Author()%></span><br>
-					<br> <input type="button"
+						<%=listArticle.get(count).getId_Author()%></span><br> <br> <input
+						type="button"
 						Onclick="location.href='ShowEditProductServlet?arId=<%=listArticle.get(count).getid_Articles()%>'"
 						value="Chỉnh sửa" /> <a
 						href="DeleteArticleServlet?arId=<%=listArticle.get(count).getid_Articles()%>"
 						Onclick="return confirm('Do you want to delete?')">Delete</a> <br>
 					<br>
 				</div>
-				<% count++; %>
+				<%
+					count++;
+				%>
 				<%
 					}
 				%>
@@ -146,6 +174,5 @@
 	</div>
 </body>
 
-<%-- <%@ include file="static/fragments/footer.html"%>
-<jsp:include page="static/fragments/footerLogin.jsp"></jsp:include> --%>
+<jsp:include page="static/fragments/footerLogin.jsp"></jsp:include>
 </html>

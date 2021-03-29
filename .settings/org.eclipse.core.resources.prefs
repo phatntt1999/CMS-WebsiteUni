@@ -3,5 +3,6 @@ encoding//WebContent/detailArticle.jsp=UTF-8
 encoding//src/common/StringCommon.java=UTF-8
 encoding//src/controller/AddingArticleServlet.java=UTF-8
 encoding//src/model/bo/AddArticleBO.java=UTF-8
+encoding//src/model/bo/SendEmailBO.java=UTF-8
 encoding//src/model/dao/AddArticleDAO.java=UTF-8
 encoding//src/model/dao/AddCommentDAO.java=UTF-8

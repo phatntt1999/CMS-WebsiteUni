@@ -10,6 +10,7 @@ public class Article {
 	private boolean Published;
 	private boolean IsNow;
 	private boolean StatusComment;
+	private String FileUpload;
 	
 	public String getid_Articles() {
 		return id_Articles;
@@ -66,6 +67,12 @@ public class Article {
 	}
 	public void setStatusComment(boolean statusComment) {
 		StatusComment = statusComment;
+	}
+	public String getFileUpload() {
+		return FileUpload;
+	}
+	public void setFileUpload(String fileUpload) {
+		FileUpload = fileUpload;
 	}
 	
 	

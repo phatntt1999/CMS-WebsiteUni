@@ -31,6 +31,7 @@ public class ShowArticleDAO extends BaseDAO{
 				item.setDate_upload(rs.getString("Date_upload"));
 				item.setId_Author(rs.getString("id_Author"));
 				item.setId_Coordinator(rs.getString("id_Coordinator"));
+				item.setFileUpload(rs.getString("FileUpload"));
 				
 				returnedList.add(item);
 			}

@@ -99,4 +99,14 @@
     <servlet-name>AddCommentServlet</servlet-name>
     <url-pattern>/AddCommentServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SendMailServlet</display-name>
+    <servlet-name>SendMailServlet</servlet-name>
+    <servlet-class>controller.SendMailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SendMailServlet</servlet-name>
+    <url-pattern>/SendMailServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
