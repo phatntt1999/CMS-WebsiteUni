@@ -40,13 +40,15 @@
 	<%
 		for (Article DeAr : detailArticle) {
 	%>
+	<h1><%=DeAr.getArticleName() %></h1>
 	<object
-		data="${pageContext.request.contextPath}/Linkfile/<%=DeAr.getFileUpload() %>"
+		data="${pageContext.request.contextPath}/Linkfile/<%=DeAr.getFileUpload()%>"
 		type="application/pdf" style="width: 80%; height: 700px">
 		<a
-			href="${pageContext.request.contextPath}./Linkfile/<%=DeAr.getFileUpload() %>">Download
+			href="${pageContext.request.contextPath}/Linkfile/<%=DeAr.getFileUpload() %>">Download
 			file.pdf</a>
 	</object>
+	
 
 	<h1>Comment in here</h1>
 	<div>--------------------------------------</div>

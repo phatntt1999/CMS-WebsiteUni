@@ -97,6 +97,7 @@ public class showListCommentDAO extends BaseDAO {
 				item.setid_Articles(rs.getString("id_Articles"));
 				item.setArticleName(rs.getString("ArticleName"));
 				item.setStatusComment(rs.getBoolean("StatusComment"));
+				item.setFileUpload(rs.getString("FileUpload"));
 				returnedList.add(item);
 			}
 		} catch (SQLException e) {

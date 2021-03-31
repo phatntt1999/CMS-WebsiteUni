@@ -47,23 +47,28 @@
 		</div>
 		<div class="row" id="add-new-contribution" style="margin-top: 30px">
 			<form action="AddingArticleServlet" enctype="multipart/form-data"
-		method="post">
+				method="post">
 				<div class="col" style="text-align: right;">
 					<hr>
 					<span style="font-size: larger; font-weight: bold;">Add New
 						Contribution</span><br>
 					<div style="margin-top: 20px;">
-						<span style="font-weight: bold;">Title:</span> 
-						<input type="text" name="articleName" id="articleName" class="title-input"><br>
+						<span style="font-weight: bold;">Title:</span> <input type="text"
+							name="articleName" id="articleName" class="title-input"><br>
 					</div>
-					<div style="margin: 20px 0px 20px 0px;">
+					<!-- <div style="margin: 20px 0px 20px 0px;">
 						<span style="font-weight: bold;">Description:</span> <input
 							type="text" class="title-input"><br>
-					</div>
-					<button id="choose-file">Choose file</button>
-					<span style="margin-left: 15px;">File Name</span><br>
+					</div> -->
+					<input id="choose-file" type="file" name="fileUpload" />
+					<!-- <span style="margin-left: 15px;">File Name</span><br>
 					<button id="submit">Submit</button>
-					<button id="close">Close</button>
+					<button id="close">Close</button> -->
+					<input id="submit" type="submit" value="Submit"> <input
+						id="submit" type="button"
+						onclick="location.href='SendMailServlet?accId=<%=session.getAttribute("account")%>';"
+						value="SubmitWithMail"> <input id="close" type="reset" value="Cancel">
+
 				</div>
 			</form>
 

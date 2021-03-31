@@ -24,6 +24,8 @@ import model.bo.AddArticleBO;
 public class AddingArticleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	public static final String SAVE_DIRECTORY = "Linkfile";
+
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -59,11 +61,33 @@ public class AddingArticleServlet extends HttpServlet {
 			response.sendRedirect("login.jsp?error=1");
 		} else {
 			AddArticleBO addArticleBO = new AddArticleBO();
+			
 			try (PrintWriter out = response.getWriter()) {
 				Part part = request.getPart("fileUpload");
 				String fileName = part.getSubmittedFileName();
-				String path = getServletContext().getRealPath("/" + "Linkfile" + File.separator + fileName);
+
+				/*String path = request.getServletContext().getRealPath("");
+				*
+				 * String fullSavePath = null; if (path.endsWith("/")) { fullSavePath = path +
+				 * SAVE_DIRECTORY; } else { fullSavePath = path + "/" + SAVE_DIRECTORY; }
+				 * 
+				 * File fileSaveDir = new File(fullSavePath); if (!fileSaveDir.exists()) {
+				 * fileSaveDir.mkdir(); }
+				 * 
+				 * String filePath = fullSavePath + File.separator + fileName;
+				 * System.out.println("Write attachment to file: " + filePath);
+				 */
+				
+				
+				part.write("E:\\Eclipse-PythonIDE\\Workplace\\WebBlogUni\\WebContent\\Linkfile\\"+fileName);
+				// String path = getServletContext().getRealPath("") + File.separator +
+				// "/Linkfile/" + fileName;
 				// InputStream is = part.getInputStream();
+				// System.out.println(path);
+				// part.write(path);
+				// part.write(new File("/Eclipse-PythonIDE/Workplace/WebBlogUni/WebContent" +
+				// fileName));
+
 
 				String userName = (String) session.getAttribute("userName");
 				String articleName = request.getParameter("articleName");
@@ -97,7 +121,7 @@ public class AddingArticleServlet extends HttpServlet {
 					rd = request.getRequestDispatcher("ShowAddingServlet?message=2");
 				}
 				rd.forward(request, response);
-				
+
 			} catch (Exception ex) {
 				System.out.println(ex);
 			}
