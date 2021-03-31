@@ -60,9 +60,9 @@ public class ShowDetailArticleServlet extends HttpServlet {
 		request.setAttribute("listComment", listComment);
 
 		/* String proid = proId ; */
-		//session.setAttribute("arId", arId);
+		session.setAttribute("arId", arId);
 
-		long checkday = 0;
+		long checkday = 1;
 		checkday = showCommentBO.CheckDay(arId);
 
 		session.setAttribute("checkday", checkday);

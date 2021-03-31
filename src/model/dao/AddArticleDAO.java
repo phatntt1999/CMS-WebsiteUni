@@ -57,11 +57,11 @@ public class AddArticleDAO extends BaseDAO {
 		return Department;
 	}
 
-	public String insertArticle(String lastestId_Article, String articleName,
-			String id_Faculty, String id_Author, String id_Coordinator, boolean published, boolean isNow, String fileUpload) {
+	public String insertArticle(String lastestId_Article, String articleName, String id_Faculty, String id_Author,
+			String id_Coordinator, boolean published, boolean isNow, String fileUpload, boolean statusComment) {
 		Connection connection = getConnection();
 		String sql = "INSERT INTO Articles (id_Articles,ArticleName,id_Faculty"
-		+ ",id_Author, id_Coordinator, Published, isNow, FileUpload) VALUES (?,?,?,?,?,?,?,?)";
+				+ ",id_Author, id_Coordinator, Published, isNow, FileUpload, StatusComment) VALUES (?,?,?,?,?,?,?,?,?)";
 
 		PreparedStatement pstmt = null;
 
@@ -75,6 +75,8 @@ public class AddArticleDAO extends BaseDAO {
 			pstmt.setBoolean(6, published);
 			pstmt.setBoolean(7, isNow);
 			pstmt.setString(8, fileUpload);
+			pstmt.setBoolean(9, statusComment);
+			
 
 			int x = pstmt.executeUpdate();
 			System.out.println("Đã chèn số record: " + x);

@@ -8,7 +8,17 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="./DetailProduct.css">
+<link rel="stylesheet" href="bootstrap.min.css">
+<script
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"
+	integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi"
+	crossorigin="anonymous"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="static/css/homepage.css">
+<script src="bootstrap.min.js"></script>
+<script src="static/js/welcome.js"></script>
+<link rel="stylesheet" href="static/css/DetailArticle.css">
 </head>
 
 <header>
@@ -17,13 +27,18 @@
 
 <body>
 	<%
+		String Message = request.getParameter("message");
+	%>
+	<%=("1".equals(Message)) ? "Post comment succesful" : "Unknown error"%>
+
+	<%
 		ArrayList<Comment> comment = (ArrayList<Comment>) request.getAttribute("listComment");
 	%>
 	<%
 		ArrayList<Article> detailArticle = (ArrayList<Article>) request.getAttribute("detailArticle");
 	%>
 	<%
-			for (Article DeAr : detailArticle) {
+		for (Article DeAr : detailArticle) {
 	%>
 	<object
 		data="${pageContext.request.contextPath}/Linkfile/<%=DeAr.getFileUpload() %>"
@@ -36,28 +51,22 @@
 	<h1>Comment in here</h1>
 	<div>--------------------------------------</div>
 	<div class="comments-container">
-
-
 		<%
 			if (DeAr.getStatusComment() == true) {
 		%>
 		<form action="AddCommentServlet" method="post">
-			<h2><%=session.getAttribute("checkday")%></h2>
-			<h5>
-				<%
-					DeAr.getid_Articles();
-				%>
-			</h5>
-			<input name="nameAccount"
-				value="<%=(String) session.getAttribute("accountInfor")%>"></input>
-			<input name="arId" value="<%=(String) session.getAttribute("arId")%>"></input>
-			<input type="text" name="comment" value="yourcomment"> <input
+			<input type="hidden" name="id_Author"
+				value="<%=(String) session.getAttribute("userName")%>"></input> <input
+				type="hidden" name="arId"
+				value="<%=(String) session.getAttribute("arId")%>"></input> <input
+				type="text" name="comment" placeholder="Your comment"> <input
 				type="submit" value="Add Comment" />
-
 		</form>
+
 		<%
 			} else {
 		%>
+		<h2><%=session.getAttribute("checkday")%></h2>
 		<h2><%=DeAr.getStatusComment()%></h2>
 		<h5>ko comment duoc nua ban oi</h5>
 		<%
@@ -114,7 +123,14 @@
 
 
 		</ul>
+		<br>
+		<center>
+			<div>----------------------------COMMENT----------------------------</div>
+		</center>
 	</div>
 
 </body>
+<footer>
+	<jsp:include page="static/fragments/footerLogin.jsp"></jsp:include>
+</footer>
 </html>

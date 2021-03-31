@@ -5,13 +5,14 @@ import model.dao.AddArticleDAO;
 
 public class AddArticleBO {
 	AddArticleDAO addArticleDAO = new AddArticleDAO();
-	
+
 	String returnedString = null;
 	String id_Faculty = null;
 	String id_Author = null;
 	String id_Coordinator = null;
 	boolean Published = false;
 	boolean isNow = true;
+	boolean statusComment = true;
 
 	public String getUserDepartment(String username) {
 
@@ -19,7 +20,7 @@ public class AddArticleBO {
 
 		return getUserDepartment;
 	}
-	
+
 	public String findid_CoordinatorProcess(String role) {
 
 		return null;
@@ -55,23 +56,21 @@ public class AddArticleBO {
 				orderNumber++;
 				lastestId_Article = StringCommon.convertNumberToString(orderNumber, 7);
 			}
-			
+
 			id_Faculty = getUserDepartment(userName);
 			id_Author = userName;
-			
+
 			if ("BIZ".equals(id_Faculty)) {
 				id_Coordinator = "bizdepartment";
-			}
-			else if ("IT".equals(id_Faculty)) {
+			} else if ("IT".equals(id_Faculty)) {
 				id_Coordinator = "itdepartment";
-			}
-			else {
+			} else {
 				id_Coordinator = "designdepartment";
 			}
-			
+
 			// Truyền mã Article mới vào trong AddArticleDAO.insertArticle
-			String returnedMessage = addArticleDAO.insertArticle
-					(lastestId_Article, articleName, id_Faculty, id_Author, id_Coordinator, Published, isNow, fileUpload);
+			String returnedMessage = addArticleDAO.insertArticle(lastestId_Article, articleName, id_Faculty, id_Author,
+					id_Coordinator, Published, isNow, fileUpload, statusComment);
 
 			if ("Duplicate ID Error.".contentEquals(returnedMessage)) {
 				returnedString = "Duplicate ID Error";
