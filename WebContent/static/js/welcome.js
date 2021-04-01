@@ -1,3 +1,4 @@
+console.log("z");
 $("#add-new-contribution").hide();
 $(document).ready(function () {
     $("#add-post").click(function () {

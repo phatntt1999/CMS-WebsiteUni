@@ -1,4 +1,8 @@
-$("#add-new-contribution").hide();
+console.log("x");
+$(document).ready(function(){
+	$("#add-new-contribution").hide();
+});
+
 $(document).ready(function(){
     $("#add-post").click(function(){
         $("#add-new-contribution").show();

@@ -99,7 +99,7 @@ public class CheckLoginServlet extends HttpServlet {
 			session.setAttribute("accountInfor", accountInfor);
 			session.setAttribute("userName", userName);
 			rd = request.getRequestDispatcher("welcomeUser.jsp");
-		} //Coordinator Design role
+		} //Coordinator User role
 		
 		rd.forward(request, response);
 	}

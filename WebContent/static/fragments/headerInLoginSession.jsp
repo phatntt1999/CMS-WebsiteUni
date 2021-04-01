@@ -29,19 +29,19 @@
 			<div class="col">
 				<a href="ShowArticleServlet"> <img
 					src="static/images/Logo-Greenwich.png" alt="Greenwich Logo"
-					width="20%" style="padding-top: 15px;">
+					width="30%" style="padding-top: 15px;">
 				</a>
 			</div>
 			<div class="col" style="text-align: right; margin-top: 20px;">
-				<input id="search-input" type="text" placeholder="Search...">
-				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-					fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                        <path
-						d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                    </svg>
 				<span style="margin-left: 10px"><%=(String) session.getAttribute("accountInfor")%></span>
 				<img src="static/images/avatar.jpg" width=70px alt=""
-					id="role-avatar"> <a href="LogoutServlet">Logout</a>
+					id="role-avatar">
+				<!-- <a href="LogoutServlet"><button
+						id="logout">Logout</button></a> -->
+				<input id="logout"
+					style="border: 1px solid; border-radius: 5px; padding: 5px 15px 5px 15px; margin-left: 10px; background: white; color: black;"
+					type="button" onclick="location.href='LogoutServlet'"
+					value="Logout" />
 				<button id="add-post">New Contribution</button>
 			</div>
 		</div>
@@ -56,18 +56,15 @@
 						<span style="font-weight: bold;">Title:</span> <input type="text"
 							name="articleName" id="articleName" class="title-input"><br>
 					</div>
-					<!-- <div style="margin: 20px 0px 20px 0px;">
-						<span style="font-weight: bold;">Description:</span> <input
-							type="text" class="title-input"><br>
-					</div> -->
-					<input id="choose-file" type="file" name="fileUpload" />
+					<input id="choose-file" type="file" name="fileUpload" /><br>
 					<!-- <span style="margin-left: 15px;">File Name</span><br>
 					<button id="submit">Submit</button>
 					<button id="close">Close</button> -->
-					<input id="submit" type="submit" value="Submit"> <input
-						id="submit" type="button"
+					<!-- <input id="submit" type="submit" value="Submit">  -->
+					<input id="submit" type="submit"
 						onclick="location.href='SendMailServlet?accId=<%=session.getAttribute("account")%>';"
-						value="SubmitWithMail"> <input id="close" type="reset" value="Cancel">
+						value="Submit"> <input id="close" type="reset"
+						value="Cancel">
 
 				</div>
 			</form>
@@ -83,6 +80,19 @@
 		</div>
 	</div>
 </header>
+<script type="text/javascript">
+	$("#add-new-contribution").hide();
+	$(document).ready(function() {
+		$("#add-post").click(function() {
+			$("#add-new-contribution").show();
+		});
+	});
+	$(document).ready(function() {
+		$("#close").click(function() {
+			$("#add-new-contribution").hide();
+		})
+	})
+</script>
 </html>
 
 

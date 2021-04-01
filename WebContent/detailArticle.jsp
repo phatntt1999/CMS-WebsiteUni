@@ -26,10 +26,10 @@
 </header>
 
 <body>
-	<%
+	<%-- <%
 		String Message = request.getParameter("message");
 	%>
-	<%=("1".equals(Message)) ? "Post comment succesful" : "Unknown error"%>
+	<%=("1".equals(Message)) ? "Post comment succesful" : "Unknown error"%> --%>
 
 	<%
 		ArrayList<Comment> comment = (ArrayList<Comment>) request.getAttribute("listComment");
