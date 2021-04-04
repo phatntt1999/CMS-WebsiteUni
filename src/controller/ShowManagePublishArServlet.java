@@ -12,18 +12,18 @@ import javax.servlet.http.HttpSession;
 
 import model.bean.Article;
 import model.bo.CheckLoginBO;
-import model.bo.ShowArticleBO;
+import model.bo.ShowManagePublishArBO;
 
 /**
- * Servlet implementation class ShowArticleServlet
+ * Servlet implementation class ShowManagePublishArServlet
  */
-public class ShowArticleServlet extends HttpServlet {
+public class ShowManagePublishArServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShowArticleServlet() {
+    public ShowManagePublishArServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,7 +40,6 @@ public class ShowArticleServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
@@ -52,39 +51,21 @@ public class ShowArticleServlet extends HttpServlet {
 		}
 		
 		else {
+			ShowManagePublishArBO showManagePublishArBO = new ShowManagePublishArBO();
 			CheckLoginBO checkLoginBO = new CheckLoginBO();
-			ShowArticleBO showProductListBO = new ShowArticleBO();
 			
 			
-			int role = (int)session.getAttribute("role"); 
+			//int totalPageNumber = showProductListBO.getTotalPageNumber();
 			String userName = (String)session.getAttribute("userName");
-			/* String departUser = (String)session.getAttribute("departUser"); */
-			
 			String departUser = checkLoginBO.getDepartUser(userName);
-			ArrayList<Article> listArticleUser = showProductListBO.getListArticleUser(departUser);
-			ArrayList<Article> listArticle = showProductListBO.getListArticle();
-			RequestDispatcher rd = null;
 			
-			if(role == 1)	{
-				rd = request.getRequestDispatcher("welcomeAdmin.jsp");
-			} //Admin role
-			else if (role == 2){
-				request.setAttribute("listArticle", listArticle);
-				rd = request.getRequestDispatcher("welcomeManager.jsp");
-			} //Manager role
-			else if (role == 3){
-				request.setAttribute("listArticleUser", listArticleUser);
-				rd = request.getRequestDispatcher("welcomeCoordinator.jsp");
-			} //Coordinator role
-			else if (role == 4){
-				request.setAttribute("listArticle", listArticle);
-				rd = request.getRequestDispatcher("welcomeGuest.jsp");
-			} //Coordinator IT role
-			else {
-				request.setAttribute("listArticleUser", listArticleUser);
-				rd = request.getRequestDispatcher("welcomeUser.jsp");
-			} //Coordinator User role
-
+			ArrayList<Article> publishArticle = showManagePublishArBO.getPublishAr(departUser);
+			request.setAttribute("publicArticle", publishArticle);
+			
+			
+			RequestDispatcher rd = null;
+			rd = request.getServletContext()
+					.getRequestDispatcher("/managePublishAr.jsp");
 			rd.forward(request, response);
 		}
 	}

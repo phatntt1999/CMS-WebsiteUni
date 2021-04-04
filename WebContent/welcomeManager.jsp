@@ -71,7 +71,18 @@
 			</div>
 			<div class="carousel-inner" style="text-align: center;">
 				<div class="carousel-item active">
-					<img src="static/images/post.jpg" class="d-block w-100" alt="...">
+					<img src="./Linkfile/<%=listArticle.get(listArticle.size() - 1).getArImage()%>" class="d-block w-100" alt="...">
+					<a href="ShowDetailArticleServlet?arId=<%=listArticle.get(listArticle.size() - 1).getid_Articles()%>"
+						class="post"><span
+						style="font-size: larger; font-weight: bold; padding-top: 20px;">
+						<%=listArticle.get(listArticle.size() - 1).getArticleName()%>
+					</span></a>
+					<br> <span><%=listArticle.get(listArticle.size() - 1).getDate_upload()%>
+					</span><br> <span><%=listArticle.get(listArticle.size() - 1).getId_Author()%>
+					</span><br>
+				</div>
+				<div class="carousel-item">
+					<img src="./Linkfile/<%=listArticle.get(listArticle.size() - 2).getArImage()%>" class="d-block w-100" alt="...">
 					<a href="ShowDetailArticleServlet?arId=<%=listArticle.get(listArticle.size() - 2).getid_Articles()%>"
 						class="post"><span
 						style="font-size: larger; font-weight: bold; padding-top: 20px;">
@@ -82,25 +93,14 @@
 					</span><br>
 				</div>
 				<div class="carousel-item">
-					<img src="static/images/post.jpg" class="d-block w-100" alt="...">
-					<a href="ShowDetailArticleServlet?arId=<%=listArticle.get(listArticle.size() - 3).getid_Articles()%>"
+					<img src="./Linkfile/<%=listArticle.get(listArticle.size() - 3).getArImage()%>" class="d-block w-100" alt="...">
+					<a  href="ShowDetailArticleServlet?arId=<%=listArticle.get(listArticle.size() - 3).getid_Articles()%>"
 						class="post"><span
 						style="font-size: larger; font-weight: bold; padding-top: 20px;">
 						<%=listArticle.get(listArticle.size() - 3).getArticleName()%>
 					</span></a>
 					<br> <span><%=listArticle.get(listArticle.size() - 3).getDate_upload()%>
 					</span><br> <span><%=listArticle.get(listArticle.size() - 3).getId_Author()%>
-					</span><br>
-				</div>
-				<div class="carousel-item">
-					<img src="static/images/post.jpg" class="d-block w-100" alt="...">
-					<a  href="ShowDetailArticleServlet?arId=<%=listArticle.get(listArticle.size() - 4).getid_Articles()%>"
-						class="post"><span
-						style="font-size: larger; font-weight: bold; padding-top: 20px;">
-						<%=listArticle.get(listArticle.size() - 4).getArticleName()%>
-					</span></a>
-					<br> <span><%=listArticle.get(listArticle.size() - 4).getDate_upload()%>
-					</span><br> <span><%=listArticle.get(listArticle.size() - 4).getId_Author()%>
 					</span><br>
 				</div>
 			</div>

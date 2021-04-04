@@ -11,6 +11,7 @@ public class Article {
 	private boolean IsNow;
 	private boolean StatusComment;
 	private String FileUpload;
+	private String ArImage;
 	
 	public String getid_Articles() {
 		return id_Articles;
@@ -74,6 +75,13 @@ public class Article {
 	public void setFileUpload(String fileUpload) {
 		FileUpload = fileUpload;
 	}
+	public String getArImage() {
+		return ArImage;
+	}
+	public void setArImage(String arImage) {
+		ArImage = arImage;
+	}
+
 	
 	
 	

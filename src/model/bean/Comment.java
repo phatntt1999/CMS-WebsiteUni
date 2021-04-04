@@ -5,6 +5,7 @@ public class Comment {
 	private String ContentComment;
 	private String id_Author;
 	private String id_Articles;
+	private String DateComment;
 
 	public String getid_Articles() {
 		return id_Articles;
@@ -37,4 +38,12 @@ public class Comment {
 
 	public void setid_Author(String id_author) {
 		this.id_Author = id_author;
+	}
+
+	public String getDateComment() {
+		return DateComment;
+	}
+
+	public void setDateComment(String dateComment) {
+		this.DateComment = dateComment;
 	}}

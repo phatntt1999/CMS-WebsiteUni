@@ -40,45 +40,103 @@
 	<%
 		for (Article DeAr : detailArticle) {
 	%>
-	<h1><%=DeAr.getArticleName() %></h1>
-	<object
-		data="${pageContext.request.contextPath}/Linkfile/<%=DeAr.getFileUpload()%>"
-		type="application/pdf" style="width: 80%; height: 700px">
-		<a
-			href="${pageContext.request.contextPath}/Linkfile/<%=DeAr.getFileUpload() %>">Download
-			file.pdf</a>
-	</object>
-	
+	<div class="container">
+		<div class="row">
+			<!-- image of post here -->
+			<div class="col" style="text-align: center;">
+				<img src="static/images/post.jpg" width="80%" alt="">
+			</div>
+		</div>
+	</div>
+	<!--Show PDF -->
+	<div class="row">
+		<div class="col-2"></div>
+		<div class="col-8">
 
-	<h1>Comment in here</h1>
-	<div>--------------------------------------</div>
+			<h1 style="margin-top: 20px; font-weight: bold;"><%=DeAr.getArticleName()%></h1>
+			<img src="static/images/avatar.jpg" alt="" class="avatar-image">
+			<span class="author-text"><%=DeAr.getId_Author()%></span> <span>
+				- </span> <span class="author-text"><%=DeAr.getDate_upload()%></span>
+			<object
+				data="${pageContext.request.contextPath}/Linkfile/<%=DeAr.getFileUpload()%>"
+				type="application/pdf" style="width: 100%; height: 700px">
+				
+			</object>
+
+			<!--bài viết của người dùng để vào đây hen -->
+		</div>
+		<div class="col-2"></div>
+	</div>
+	<!--End Show PDF -->
+
+	<!--Comment -->
+	<div class="row">
+		<div class="col-3"></div>
+		<div class="col-6">
+			<hr>
+			<img src="static/images/avatar.jpg" alt="" class="avatar-image">
+			<span class="author-text" style=""><%=(String) session.getAttribute("userName")%></span>
+
+			<!--bài viết của người dùng để vào đây hen -->
+			<h5>
+				Comment in here
+				</h2>
+		</div>
+		<div class="col-3"></div>
+	</div>
+	<div class="row">
+		<div class="col-3"></div>
+		<div class="col-6">
+			<hr>
+			<%
+				if (DeAr.getStatusComment() == true) {
+			%>
+			<form action="AddCommentServlet" method="post">
+				<div class="row mb-3"></div>
+				<div class="row mb-3">
+					<label for="comments" class="col-sm-2 col-form-label">Comment</label>
+					<div class="col-sm-10">
+						<textarea name="comment" class="form-control"
+							id="exampleFormControlTextarea1" rows="2"></textarea>
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="col-sm-10 offset-sm-2">
+						<div class="form-check">
+							<input type="hidden" name="id_Author"
+								value="<%=(String) session.getAttribute("userName")%>"></input>
+							<input type="hidden" name="arId"
+								value="<%=(String) session.getAttribute("arId")%>"></input>
+							<!-- <input
+								class="col-sm-2 col-form-label" type="text" name="comment"
+								placeholder="Your comment"> -->
+						</div>
+					</div>
+				</div>
+				<center>
+					<button type="submit" class="btn btn-primary"
+						style="padding: 5px 25px 5px 25px;">Add Comment</button>
+				</center>
+				<hr>
+			</form>
+			<%
+				} else {
+			%>
+			<h2><%=session.getAttribute("checkday")%></h2>
+			<h2><%=DeAr.getStatusComment()%></h2>
+			<h5>ko comment duoc nua ban oi</h5>
+			<%
+				}
+			%>
+			<%
+				}
+			%>
+			<!-- đóng for -->
+		</div>
+		<div class="col-3"></div>
+	</div>
+
 	<div class="comments-container">
-		<%
-			if (DeAr.getStatusComment() == true) {
-		%>
-		<form action="AddCommentServlet" method="post">
-			<input type="hidden" name="id_Author"
-				value="<%=(String) session.getAttribute("userName")%>"></input> <input
-				type="hidden" name="arId"
-				value="<%=(String) session.getAttribute("arId")%>"></input> <input
-				type="text" name="comment" placeholder="Your comment"> <input
-				type="submit" value="Add Comment" />
-		</form>
-
-		<%
-			} else {
-		%>
-		<h2><%=session.getAttribute("checkday")%></h2>
-		<h2><%=DeAr.getStatusComment()%></h2>
-		<h5>ko comment duoc nua ban oi</h5>
-		<%
-			}
-		%>
-		<%
-			}
-		%>
-		<!-- đóng for -->
-
 
 		<ul id="comments-list" class="comments-list">
 			<%
@@ -102,9 +160,10 @@
 					<!-- Contenedor del Comentario -->
 					<div class="comment-box">
 						<div class="comment-head">
-							<h6 class="comment-name">
+							<h5 class="comment-name">
 								<a><%=cm.getid_Author()%></a>
-							</h6>
+							</h5>
+							<span><%=cm.getDateComment()%></span>
 							<i class="fa fa-reply"></i> <i class="fa fa-heart"></i>
 						</div>
 						<div class="comment-content">
@@ -126,9 +185,7 @@
 
 		</ul>
 		<br>
-		<center>
-			<div>----------------------------COMMENT----------------------------</div>
-		</center>
+		<hr>
 	</div>
 
 </body>

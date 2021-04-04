@@ -28,13 +28,13 @@
 <title>Manager Home page</title>
 </head>
 <header>
-	<%@ include file="static/fragments/header.html"%>
+	<jsp:include page="static/fragments/headerInLoginSession.jsp"></jsp:include>
 </header>
 
 
 <body>
 	<%
-		ArrayList<Article> listArticle = (ArrayList<Article>) request.getAttribute("listArticle");
+		ArrayList<Article> listArticle = (ArrayList<Article>) request.getAttribute("listArticleUser");
 	%>
 	<div class="container" style="padding-bottom: 30px;">
 		<div class="row"

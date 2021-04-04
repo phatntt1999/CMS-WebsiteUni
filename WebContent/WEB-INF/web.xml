@@ -109,4 +109,34 @@
     <servlet-name>SendMailServlet</servlet-name>
     <url-pattern>/SendMailServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ManagePublishArticleServlet</display-name>
+    <servlet-name>ManagePublishArticleServlet</servlet-name>
+    <servlet-class>controller.ManagePublishArticleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ManagePublishArticleServlet</servlet-name>
+    <url-pattern>/ManagePublishArticleServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShowManagePublishArServlet</display-name>
+    <servlet-name>ShowManagePublishArServlet</servlet-name>
+    <servlet-class>controller.ShowManagePublishArServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowManagePublishArServlet</servlet-name>
+    <url-pattern>/ShowManagePublishArServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DownloadArticleServlet</display-name>
+    <servlet-name>DownloadArticleServlet</servlet-name>
+    <servlet-class>controller.DownloadArticleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DownloadArticleServlet</servlet-name>
+    <url-pattern>/DownloadArticleServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

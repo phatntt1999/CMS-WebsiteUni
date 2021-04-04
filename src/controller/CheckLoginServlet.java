@@ -50,9 +50,9 @@ public class CheckLoginServlet extends HttpServlet {
 		final int INVALID_ACCOUNT = 0;
 		final int ADMIN_ACCOUNT = 1;
 		final int MANAGER_ACCOUNT = 2;
-		final int COORDINATORBIZ = 3;
-		final int COORDINATORIT = 4;
-		final int COORDINATORDS = 5;
+		final int COORDINATOR = 3;
+		final int GUEST = 4;
+		final int USER = 5;
 		
 		String accountInfor = null;
 		HttpSession session = request.getSession();
@@ -60,6 +60,9 @@ public class CheckLoginServlet extends HttpServlet {
 		RequestDispatcher rd = null;
 		accountInfor = "Welcome! " + userName;
 		String account = userName;
+		/*
+		 * String departUser = null; departUser = checkLoginBO.getDepartUser(userName);
+		 */
 		
 		if(checkLoginBO.getAccountRole(userName, passWord) == INVALID_ACCOUNT)	{
 			rd = request.getRequestDispatcher("login.jsp?error=2");
@@ -68,37 +71,37 @@ public class CheckLoginServlet extends HttpServlet {
 			session.setAttribute("account", account);
 			session.setAttribute("accountInfor", accountInfor);
 			session.setAttribute("userName", userName);
-			rd = request.getRequestDispatcher("welcomeAdmin.jsp");
+			session.setAttribute("role", ADMIN_ACCOUNT);
+			rd = request.getRequestDispatcher("ShowArticleServlet");
 		} //Admin role
 		else if (checkLoginBO.getAccountRole(userName, passWord) == MANAGER_ACCOUNT){
 			session.setAttribute("account", account);
 			session.setAttribute("accountInfor", accountInfor);
 			session.setAttribute("userName", userName);
+			session.setAttribute("role", MANAGER_ACCOUNT);
 			rd = request.getRequestDispatcher("ShowArticleServlet");
 		} //Manager role
-		else if (checkLoginBO.getAccountRole(userName, passWord) == COORDINATORBIZ){
+		else if (checkLoginBO.getAccountRole(userName, passWord) == COORDINATOR){
 			session.setAttribute("account", account);
 			session.setAttribute("accountInfor", accountInfor);
 			session.setAttribute("userName", userName);
-			rd = request.getRequestDispatcher("welcomeCoordinator.jsp");
-		} //Coordinator Business role
-		else if (checkLoginBO.getAccountRole(userName, passWord) == COORDINATORIT){
+			session.setAttribute("role", COORDINATOR);
+			rd = request.getRequestDispatcher("ShowArticleServlet");
+		} //Coordinator role
+		else if (checkLoginBO.getAccountRole(userName, passWord) == GUEST){
 			session.setAttribute("account", account);
 			session.setAttribute("accountInfor", accountInfor);
 			session.setAttribute("userName", userName);
-			rd = request.getRequestDispatcher("welcomeCoordinator.jsp");
+			session.setAttribute("role", GUEST);
+			rd = request.getRequestDispatcher("ShowArticleServlet");
 		} //Coordinator IT role
-		else if (checkLoginBO.getAccountRole(userName, passWord) == COORDINATORDS){
-			session.setAttribute("account", account);
-			session.setAttribute("accountInfor", accountInfor);
-			session.setAttribute("userName", userName);
-			rd = request.getRequestDispatcher("welcomeCoordinator.jsp");
-		} //Coordinator Design role
 		else {
 			session.setAttribute("account", account);
 			session.setAttribute("accountInfor", accountInfor);
 			session.setAttribute("userName", userName);
-			rd = request.getRequestDispatcher("welcomeUser.jsp");
+			session.setAttribute("role", USER);
+			/* session.setAttribute("departUser", departUser); */
+			rd = request.getRequestDispatcher("ShowArticleServlet");
 		} //Coordinator User role
 		
 		rd.forward(request, response);

@@ -25,6 +25,7 @@ public class showListCommentDAO extends BaseDAO {
 			while (rs.next()) {
 				item = new Comment();
 				item.setid_Comment(rs.getString("id_Comment"));
+				item.setDateComment(rs.getString("DateComment"));
 				item.setContentComment(rs.getString("ContentComment"));
 				item.setid_Author(rs.getString("id_Author"));
 				returnedList.add(item);
@@ -96,6 +97,8 @@ public class showListCommentDAO extends BaseDAO {
 				item = new Article();
 				item.setid_Articles(rs.getString("id_Articles"));
 				item.setArticleName(rs.getString("ArticleName"));
+				item.setId_Author(rs.getString("id_Author"));
+				item.setDate_upload(rs.getString("Date_upload"));
 				item.setStatusComment(rs.getBoolean("StatusComment"));
 				item.setFileUpload(rs.getString("FileUpload"));
 				returnedList.add(item);
