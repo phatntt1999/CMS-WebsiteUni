@@ -12,7 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-
+<link rel="stylesheet" href="./static/css/heart.css">
 <link rel="stylesheet" href="bootstrap.min.css">
 
 <script
@@ -70,36 +70,39 @@
 			</div>
 			<div class="carousel-inner" style="text-align: center;">
 				<div class="carousel-item active">
-					<img src="static/images/post.jpg" class="d-block w-100" alt="...">
-					<a href="ShowDetailArticleServlet?arId=<%=listArticle.get(listArticle.size() - 2).getid_Articles()%>"
+					<img
+						src="./Linkfile/<%=listArticle.get(0).getArImage()%>"
+						class="d-block w-100" alt="..."> <a
+						href="ShowDetailArticleServlet?arId=<%=listArticle.get(0).getid_Articles()%>"
 						class="post"><span
 						style="font-size: larger; font-weight: bold; padding-top: 20px;">
-						<%=listArticle.get(listArticle.size() - 2).getArticleName()%>
-					</span></a>
-					<br> <span><%=listArticle.get(listArticle.size() - 2).getDate_upload()%>
-					</span><br> <span><%=listArticle.get(listArticle.size() - 2).getId_Author()%>
+							<%=listArticle.get(0).getArticleName()%>
+					</span></a> <br> <span><%=listArticle.get(0).getDate_upload()%>
+					</span><br> <span><%=listArticle.get(0).getId_Author()%>
 					</span><br>
 				</div>
 				<div class="carousel-item">
-					<img src="static/images/post.jpg" class="d-block w-100" alt="...">
-					<a href="ShowDetailArticleServlet?arId=<%=listArticle.get(listArticle.size() - 3).getid_Articles()%>"
+					<img
+						src="./Linkfile/<%=listArticle.get(1).getArImage()%>"
+						class="d-block w-100" alt="..."> <a
+						href="ShowDetailArticleServlet?arId=<%=listArticle.get(1).getid_Articles()%>"
 						class="post"><span
 						style="font-size: larger; font-weight: bold; padding-top: 20px;">
-						<%=listArticle.get(listArticle.size() - 3).getArticleName()%>
-					</span></a>
-					<br> <span><%=listArticle.get(listArticle.size() - 3).getDate_upload()%>
-					</span><br> <span><%=listArticle.get(listArticle.size() - 3).getId_Author()%>
+							<%=listArticle.get(1).getArticleName()%>
+					</span></a> <br> <span><%=listArticle.get(1).getDate_upload()%>
+					</span><br> <span><%=listArticle.get(1).getId_Author()%>
 					</span><br>
 				</div>
 				<div class="carousel-item">
-					<img src="static/images/post.jpg" class="d-block w-100" alt="...">
-					<a  href="ShowDetailArticleServlet?arId=<%=listArticle.get(listArticle.size() - 4).getid_Articles()%>"
+					<img
+						src="./Linkfile/<%=listArticle.get(2).getArImage()%>"
+						class="d-block w-100" alt="..."> <a
+						href="ShowDetailArticleServlet?arId=<%=listArticle.get(2).getid_Articles()%>"
 						class="post"><span
 						style="font-size: larger; font-weight: bold; padding-top: 20px;">
-						<%=listArticle.get(listArticle.size() - 4).getArticleName()%>
-					</span></a>
-					<br> <span><%=listArticle.get(listArticle.size() - 4).getDate_upload()%>
-					</span><br> <span><%=listArticle.get(listArticle.size() - 4).getId_Author()%>
+							<%=listArticle.get(2).getArticleName()%>
+					</span></a> <br> <span><%=listArticle.get(2).getDate_upload()%>
+					</span><br> <span><%=listArticle.get(2).getId_Author()%>
 					</span><br>
 				</div>
 			</div>
@@ -120,57 +123,56 @@
 			<span style="font-weight: bold; font-size: x-large;">Latest
 				posts on CMS</span>
 			<hr>
-			<input type="button" onclick="location.href='ShowAddingServlet'"
-				value="Add" />
-
-			<%-- Logic handling show product list --%>
-			<%
-				int count = 0;
-			%>
-
-			<%-- <% for (Article Ar : listArticle) { %> --%>
-			<%
-				for (int j = 1; j < 4; j++) {
-			%>
-			<div class="row" style="padding-bottom: 30px;">
+			<div class="container" style="display: flex; flex-flow: row wrap;">
 				<%
-					for (int i = 1; i < 4; i++) {
+					for (Article Ar : listArticle) {
 				%>
-				<div class="col">
-					<a
-						href="ShowDetailArticleServlet?arId=<%=listArticle.get(count).getid_Articles()%>"
-						class="post"> <img src="static/images/post.jpg" alt=""
-						class="post-image">
+
+				<div class="box">
+					<a href="ShowDetailArticleServlet?arId=<%=Ar.getid_Articles()%>"
+						class="post"> <img src="./Linkfile/<%=Ar.getArImage()%>"
+						alt="" class="post-image">
 					</a><br> <a
-						href="ShowDetailArticleServlet?arId=<%=listArticle.get(count).getid_Articles()%>"
+						href="ShowDetailArticleServlet?arId=<%=Ar.getid_Articles()%>"
 						class="post"> <span
-						style="font-size: larger; font-weight: bold;"><%=listArticle.get(count).getArticleName()%></span>
-					</a> <br> <span>Date upload: <%=listArticle.get(count).getDate_upload()%></span>
-					<br> <img src="static/images/avatar.jpg" alt=""
-						class="avatar-image"> <span class="author-text">Author:
-						<%=listArticle.get(count).getId_Author()%></span><br> <br> <input
-						type="button"
-						Onclick="location.href='ShowEditProductServlet?arId=<%=listArticle.get(count).getid_Articles()%>'"
-						value="Chỉnh sửa" /> <a
-						href="DeleteArticleServlet?arId=<%=listArticle.get(count).getid_Articles()%>"
-						Onclick="return confirm('Do you want to delete?')">Delete</a> <br>
-					<br>
-				</div>
-				<%
-					count++;
-				%>
-				<%
-					}
-				%>
-				<%
-					}
-				%>
-				<%-- Close for loop --%>
-				<%-- //End Logic handling show product list --%>
-			</div>
+						style="font-size: larger; font-weight: bold;"><%=Ar.getArticleName()%></span></a><br>
+					<span>Date Upload: <%=Ar.getDate_upload()%></span><br> <img
+						src="static/images/avatar.jpg" alt="" class="avatar-image">
+					<span class="author-text">Author: <%=Ar.getId_Author()%></span><br>
+					</a>
 
+					<div class="content" id="<%=Ar.getid_Articles()%>">
+						<span class="heart <%=Ar.getid_Articles()%>"></span> 
+						<span class="text <%=Ar.getid_Articles()%>">Like</span> 
+						<span class="numb <%=Ar.getid_Articles()%>">
+							<span class="val <%=Ar.getid_Articles()%>"></span>
+						</span>
+
+					</div>
+					<script>
+      $(document).ready(function(){
+        $('#<%=Ar.getid_Articles()%>').click(function(){
+          $('.content .<%=Ar.getid_Articles()%>').toggleClass("heart-active")
+          $('.text .<%=Ar.getid_Articles()%>').toggleClass("heart-active")
+          $('.numb .<%=Ar.getid_Articles()%>').toggleClass("heart-active")
+          $('.heart .<%=Ar.getid_Articles()%>').toggleClass("heart-active")
+        });
+      });
+    </script>
+
+				</div>
+				
+
+				<%
+					}
+				%>
+			</div>
+			<%-- Close for loop --%>
+			<%-- //End Logic handling show product list --%>
 		</div>
+
 	</div>
+	
 </body>
 
 <jsp:include page="static/fragments/footerLogin.jsp"></jsp:include>

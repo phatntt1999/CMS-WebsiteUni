@@ -14,7 +14,7 @@ public class ShowArticleDAO extends BaseDAO {
 		ArrayList<Article> returnedList = new ArrayList<Article>(); // Khoi tao ArrayList Article
 
 		Connection connection = getConnection();
-		String sql = "SELECT * FROM Articles";
+		String sql = "SELECT * FROM Articles ORDER BY id_Articles DESC";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {

@@ -56,7 +56,10 @@
 						<span style="font-weight: bold;">Title:</span> <input type="text"
 							name="articleName" id="articleName" class="title-input"><br>
 					</div>
+					<span style="font-weight: bold;">PDF Upload:</span>
 					<input id="choose-file" type="file" name="fileUpload" /><br>
+					<span style="font-weight: bold;">Image Upload:</span>
+					<input id="choose-file" type="file" name="imageUpload" /><br>
 					<!-- <span style="margin-left: 15px;">File Name</span><br>
 					<button id="submit">Submit</button>
 					<button id="close">Close</button> -->
