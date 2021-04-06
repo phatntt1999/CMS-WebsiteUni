@@ -70,40 +70,34 @@
 			</div>
 			<div class="carousel-inner" style="text-align: center;">
 				<div class="carousel-item active">
-					<img
-						src="./Linkfile/<%=listArticle.get(0).getArImage()%>"
+					<img src="./Linkfile/<%=listArticle.get(0).getArImage()%>"
 						class="d-block w-100" alt="..."> <a
 						href="ShowDetailArticleServlet?arId=<%=listArticle.get(0).getid_Articles()%>"
 						class="post"><span
 						style="font-size: larger; font-weight: bold; padding-top: 20px;">
 							<%=listArticle.get(0).getArticleName()%>
-					</span></a> <br> <span><%=listArticle.get(0).getDate_upload()%>
-					</span><br> <span><%=listArticle.get(0).getId_Author()%>
-					</span><br>
+					</span></a> <br> <span><%=listArticle.get(0).getDate_upload()%> </span><br>
+					<span><%=listArticle.get(0).getId_Author()%> </span><br>
 				</div>
 				<div class="carousel-item">
-					<img
-						src="./Linkfile/<%=listArticle.get(1).getArImage()%>"
+					<img src="./Linkfile/<%=listArticle.get(1).getArImage()%>"
 						class="d-block w-100" alt="..."> <a
 						href="ShowDetailArticleServlet?arId=<%=listArticle.get(1).getid_Articles()%>"
 						class="post"><span
 						style="font-size: larger; font-weight: bold; padding-top: 20px;">
 							<%=listArticle.get(1).getArticleName()%>
-					</span></a> <br> <span><%=listArticle.get(1).getDate_upload()%>
-					</span><br> <span><%=listArticle.get(1).getId_Author()%>
-					</span><br>
+					</span></a> <br> <span><%=listArticle.get(1).getDate_upload()%> </span><br>
+					<span><%=listArticle.get(1).getId_Author()%> </span><br>
 				</div>
 				<div class="carousel-item">
-					<img
-						src="./Linkfile/<%=listArticle.get(2).getArImage()%>"
+					<img src="./Linkfile/<%=listArticle.get(2).getArImage()%>"
 						class="d-block w-100" alt="..."> <a
 						href="ShowDetailArticleServlet?arId=<%=listArticle.get(2).getid_Articles()%>"
 						class="post"><span
 						style="font-size: larger; font-weight: bold; padding-top: 20px;">
 							<%=listArticle.get(2).getArticleName()%>
-					</span></a> <br> <span><%=listArticle.get(2).getDate_upload()%>
-					</span><br> <span><%=listArticle.get(2).getId_Author()%>
-					</span><br>
+					</span></a> <br> <span><%=listArticle.get(2).getDate_upload()%> </span><br>
+					<span><%=listArticle.get(2).getId_Author()%> </span><br>
 				</div>
 			</div>
 			<button class="carousel-control-prev" type="button"
@@ -137,15 +131,15 @@
 						class="post"> <span
 						style="font-size: larger; font-weight: bold;"><%=Ar.getArticleName()%></span></a><br>
 					<span>Date Upload: <%=Ar.getDate_upload()%></span><br> <img
-						src="static/images/avatar.jpg" alt="" class="avatar-image">
+						src="./Linkfile/<%=Ar.getAvatarUser()%>" alt="" class="avatar-image">
 					<span class="author-text">Author: <%=Ar.getId_Author()%></span><br>
 					</a>
 
 					<div class="content" id="<%=Ar.getid_Articles()%>">
-						<span class="heart <%=Ar.getid_Articles()%>"></span> 
-						<span class="text <%=Ar.getid_Articles()%>">Like</span> 
-						<span class="numb <%=Ar.getid_Articles()%>">
-							<span class="val <%=Ar.getid_Articles()%>"></span>
+						<span class="heart <%=Ar.getid_Articles()%>"></span> <span
+							class="text <%=Ar.getid_Articles()%>">Like</span> <span
+							class="numb <%=Ar.getid_Articles()%>"> <span
+							class="val <%=Ar.getid_Articles()%>"></span>
 						</span>
 
 					</div>
@@ -161,7 +155,7 @@
     </script>
 
 				</div>
-				
+
 
 				<%
 					}
@@ -172,7 +166,7 @@
 		</div>
 
 	</div>
-	
+
 </body>
 
 <jsp:include page="static/fragments/footerLogin.jsp"></jsp:include>

@@ -44,7 +44,7 @@
 		<div class="row">
 			<!-- image of post here -->
 			<div class="col" style="text-align: center;">
-				<img src="static/images/post.jpg" width="80%" alt="">
+				<img src="./Linkfile/<%=DeAr.getArImage()%>" width="80%" alt="">
 			</div>
 		</div>
 	</div>
@@ -54,7 +54,7 @@
 		<div class="col-8">
 
 			<h1 style="margin-top: 20px; font-weight: bold;"><%=DeAr.getArticleName()%></h1>
-			<img src="static/images/avatar.jpg" alt="" class="avatar-image">
+			<img src="./Linkfile/<%=DeAr.getAvatarUser()%>" alt="" class="avatar-image">
 			<span class="author-text"><%=DeAr.getId_Author()%></span> <span>
 				- </span> <span class="author-text"><%=DeAr.getDate_upload()%></span>
 			<object
@@ -74,8 +74,8 @@
 		<div class="col-3"></div>
 		<div class="col-6">
 			<hr>
-			<img src="static/images/avatar.jpg" alt="" class="avatar-image">
-			<span class="author-text" style=""><%=(String) session.getAttribute("userName")%></span>
+			<img src="./Linkfile/<%=(String)session.getAttribute("avatar")%>" alt="" class="avatar-image">
+			<span class="author-text" style=""><%=(String)session.getAttribute("userName")%></span>
 
 			<!--bài viết của người dùng để vào đây hen -->
 			<h5>
@@ -153,9 +153,7 @@
 				<div class="comment-main-level">
 					<!-- Avatar -->
 					<div class="comment-avatar">
-						<img
-							src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg"
-							alt="">
+						<img src="./Linkfile/<%=cm.getAvatarCommenter()%>" alt="">
 					</div>
 					<!-- Contenedor del Comentario -->
 					<div class="comment-box">

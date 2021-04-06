@@ -18,9 +18,7 @@ public class AddCommentDAO extends BaseDAO {
 			pstmt.setString(2, ContentComment);
 			pstmt.setString(3, id_Articles);
 			pstmt.setString(4, id_Author);
-			
-			
-			
+
 			int x = pstmt.executeUpdate();
 			System.out.println("Insert successful: " + x);
 		} catch (SQLException e) {

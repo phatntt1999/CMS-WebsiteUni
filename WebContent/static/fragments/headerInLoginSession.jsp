@@ -1,3 +1,5 @@
+<%@page import="model.bean.Article"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,7 +22,6 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"
 	integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG"
 	crossorigin="anonymous"></script>
-<title>Homepage</title>
 </head>
 
 <header>
@@ -33,9 +34,11 @@
 				</a>
 			</div>
 			<div class="col" style="text-align: right; margin-top: 20px;">
-				<span style="margin-left: 10px"><%=(String) session.getAttribute("accountInfor")%></span>
-				<img src="static/images/avatar.jpg" width=70px alt=""
-					id="role-avatar">
+				<a
+					href="ShowAccountInforServlet?AccId=<%=(String)session.getAttribute("userName")%>">
+					<span style="margin-left: 10px"><%=(String)session.getAttribute("accountInfor")%></span>
+				</a> <img src="./Linkfile/<%=(String)session.getAttribute("avatar")%>"
+					width=70px alt="" id="role-avatar">
 				<!-- <a href="LogoutServlet"><button
 						id="logout">Logout</button></a> -->
 				<input id="logout"
@@ -56,10 +59,10 @@
 						<span style="font-weight: bold;">Title:</span> <input type="text"
 							name="articleName" id="articleName" class="title-input"><br>
 					</div>
-					<span style="font-weight: bold;">PDF Upload:</span>
-					<input id="choose-file" type="file" name="fileUpload" /><br>
-					<span style="font-weight: bold;">Image Upload:</span>
-					<input id="choose-file" type="file" name="imageUpload" /><br>
+					<span style="font-weight: bold;">PDF Upload:</span> <input
+						id="choose-file" type="file" name="fileUpload" /><br> <span
+						style="font-weight: bold;">Image Upload:</span> <input
+						id="choose-file" type="file" name="imageUpload" /><br>
 					<!-- <span style="margin-left: 15px;">File Name</span><br>
 					<button id="submit">Submit</button>
 					<button id="close">Close</button> -->

@@ -13,7 +13,10 @@ public class showListCommentDAO extends BaseDAO {
 
 		ArrayList<Comment> returnedList = new ArrayList<Comment>();
 		Connection connection = getConnection();
-		String sql = "SELECT * FROM Comment WHERE id_Articles = ?";
+		String sql = "SELECT Comment.id_Comment, Comment.DateComment, Comment.ContentComment, Comment.id_Author, AccountRole.Avatar\r\n" + 
+				"FROM Comment\r\n" + 
+				"INNER JOIN AccountRole ON Comment.id_Author = AccountRole.AccUsername\r\n" + 
+				"WHERE id_Articles = ?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
@@ -28,6 +31,7 @@ public class showListCommentDAO extends BaseDAO {
 				item.setDateComment(rs.getString("DateComment"));
 				item.setContentComment(rs.getString("ContentComment"));
 				item.setid_Author(rs.getString("id_Author"));
+				item.setAvatarCommenter(rs.getString("Avatar"));
 				returnedList.add(item);
 			}
 		} catch (SQLException e) {
@@ -85,7 +89,9 @@ public class showListCommentDAO extends BaseDAO {
 
 		ArrayList<Article> returnedList = new ArrayList<Article>();
 		Connection connection = getConnection();
-		String sql = "SELECT * FROM Articles WHERE id_Articles = ?";
+		
+		String sql = "SELECT Articles.id_Articles, Articles.ArticleName, Articles.id_Author, Articles.Date_upload, Articles.StatusComment, Articles.FileUpload, Articles.ArticleImage, AccountRole.Avatar FROM Articles INNER JOIN AccountRole ON Articles.id_Author = AccountRole.AccUsername WHERE id_Articles = ?";
+
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
@@ -101,6 +107,8 @@ public class showListCommentDAO extends BaseDAO {
 				item.setDate_upload(rs.getString("Date_upload"));
 				item.setStatusComment(rs.getBoolean("StatusComment"));
 				item.setFileUpload(rs.getString("FileUpload"));
+				item.setAvatarUser(rs.getString("Avatar"));
+				item.setArImage(rs.getString("ArticleImage"));
 				returnedList.add(item);
 			}
 		} catch (SQLException e) {

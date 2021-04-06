@@ -12,6 +12,7 @@ public class Article {
 	private boolean StatusComment;
 	private String FileUpload;
 	private String ArImage;
+	private String AvatarUser;
 	
 	public String getid_Articles() {
 		return id_Articles;
@@ -80,6 +81,12 @@ public class Article {
 	}
 	public void setArImage(String arImage) {
 		ArImage = arImage;
+	}
+	public String getAvatarUser() {
+		return AvatarUser;
+	}
+	public void setAvatarUser(String avatarUser) {
+		AvatarUser = avatarUser;
 	}
 
 	

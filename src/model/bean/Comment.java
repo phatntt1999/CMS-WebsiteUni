@@ -6,6 +6,7 @@ public class Comment {
 	private String id_Author;
 	private String id_Articles;
 	private String DateComment;
+	private String AvatarCommenter;
 
 	public String getid_Articles() {
 		return id_Articles;
@@ -46,4 +47,12 @@ public class Comment {
 
 	public void setDateComment(String dateComment) {
 		this.DateComment = dateComment;
+	}
+
+	public String getAvatarCommenter() {
+		return AvatarCommenter;
+	}
+
+	public void setAvatarCommenter(String avatarCommenter) {
+		AvatarCommenter = avatarCommenter;
 	}}

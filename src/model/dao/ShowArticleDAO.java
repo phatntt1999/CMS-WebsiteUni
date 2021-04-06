@@ -14,7 +14,7 @@ public class ShowArticleDAO extends BaseDAO {
 		ArrayList<Article> returnedList = new ArrayList<Article>(); // Khoi tao ArrayList Article
 
 		Connection connection = getConnection();
-		String sql = "SELECT * FROM Articles ORDER BY id_Articles DESC";
+		String sql = "SELECT Articles.id_Articles, Articles.ArticleName, Articles.Date_upload, Articles.id_Author, Articles.id_Coordinator, Articles.FileUpload, Articles.ArticleImage, AccountRole.Avatar FROM Articles INNER JOIN AccountRole ON Articles.id_Author = AccountRole.AccUsername ORDER BY id_Articles DESC";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
@@ -32,6 +32,7 @@ public class ShowArticleDAO extends BaseDAO {
 				item.setId_Coordinator(rs.getString("id_Coordinator"));
 				item.setFileUpload(rs.getString("FileUpload"));
 				item.setArImage(rs.getString("ArticleImage"));
+				item.setAvatarUser(rs.getString("Avatar"));
 
 				returnedList.add(item);
 			}
@@ -50,7 +51,7 @@ public class ShowArticleDAO extends BaseDAO {
 		ArrayList<Article> returnedList = new ArrayList<Article>(); // Khoi tao ArrayList Article
 
 		Connection connection = getConnection();
-		String sql = "SELECT * FROM Articles WHERE id_Faculty = ?";
+		String sql = "SELECT * FROM Articles INNER JOIN AccountRole ON Articles.id_Author = AccountRole.AccUsername WHERE id_Faculty = ? ORDER BY id_Articles DESC";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
@@ -68,6 +69,8 @@ public class ShowArticleDAO extends BaseDAO {
 				item.setId_Author(rs.getString("id_Author"));
 				item.setId_Coordinator(rs.getString("id_Coordinator"));
 				item.setFileUpload(rs.getString("FileUpload"));
+				item.setArImage(rs.getString("ArticleImage"));
+				item.setAvatarUser(rs.getString("Avatar"));
 
 				returnedList.add(item);
 			}

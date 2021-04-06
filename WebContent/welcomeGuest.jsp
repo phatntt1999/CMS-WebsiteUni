@@ -137,7 +137,7 @@
 						<span style="font-size: larger; font-weight: bold;"><%=Ar.getArticleName()%></span></a><br>
 					<span>Date Upload: <%=Ar.getDate_upload()%></span><br> 
 					<img
-						src="static/images/avatar.jpg" alt="" class="avatar-image"> <span
+						src="./Linkfile/<%=Ar.getAvatarUser()%>" alt="" class="avatar-image"> <span
 						class="author-text">Author: <%=Ar.getId_Author()%></span><br> </a>
 				</div>
 				<%

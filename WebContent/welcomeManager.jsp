@@ -35,7 +35,7 @@
 
 <body>
 	<%
-		ArrayList<Article> listArticle = (ArrayList<Article>) request.getAttribute("listArticle");
+		ArrayList<Article> listArticle = (ArrayList<Article>)request.getAttribute("listArticle");
 	%>
 	<div class="container" style="padding-bottom: 30px;">
 		<div class="row"
@@ -167,9 +167,9 @@
 					}
 				%> --%>
 
-			<div class="container" style="display: flex; flex-flow: row wrap;">
+			<div class="container" style="display: flex; align-items:flex-start; flex-flow: row wrap;">
 				<% for (Article Ar : listArticle) { %>
-				<div class="box">
+				<div class="box" style="align-self: flex-start;">
 					<a href="ShowDetailArticleServlet?arId=<%=Ar.getid_Articles()%>"
 						class="post"> <img src="./Linkfile/<%=Ar.getArImage()%>" alt=""
 						class="post-image">
@@ -179,7 +179,7 @@
 						<span style="font-size: larger; font-weight: bold;"><%=Ar.getArticleName()%></span></a><br>
 					<span>Date Upload: <%=Ar.getDate_upload()%></span><br> 
 					<img
-						src="static/images/avatar.jpg" alt="" class="avatar-image"> <span
+						src="./Linkfile/<%=Ar.getAvatarUser()%>" alt="" class="avatar-image"> <span
 						class="author-text">Author: <%=Ar.getId_Author()%></span><br> </a>
 				</div>
 				<%

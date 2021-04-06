@@ -139,4 +139,14 @@
     <servlet-name>DownloadArticleServlet</servlet-name>
     <url-pattern>/DownloadArticleServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShowAccountInforServlet</display-name>
+    <servlet-name>ShowAccountInforServlet</servlet-name>
+    <servlet-class>controller.ShowAccountInforServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowAccountInforServlet</servlet-name>
+    <url-pattern>/ShowAccountInforServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
