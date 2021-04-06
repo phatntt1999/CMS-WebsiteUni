@@ -65,35 +65,19 @@ public class AddingArticleServlet extends HttpServlet {
 			try (PrintWriter out = response.getWriter()) {
 				Part part = request.getPart("fileUpload");
 				String fileName = part.getSubmittedFileName();
-
-				/*String path = request.getServletContext().getRealPath("");
-				*
-				 * String fullSavePath = null; if (path.endsWith("/")) { fullSavePath = path +
-				 * SAVE_DIRECTORY; } else { fullSavePath = path + "/" + SAVE_DIRECTORY; }
-				 * 
-				 * File fileSaveDir = new File(fullSavePath); if (!fileSaveDir.exists()) {
-				 * fileSaveDir.mkdir(); }
-				 * 
-				 * String filePath = fullSavePath + File.separator + fileName;
-				 * System.out.println("Write attachment to file: " + filePath);
-				 */
-				
 				
 				part.write("E:\\Eclipse-PythonIDE\\Workplace\\WebBlogUni\\WebContent\\Linkfile\\"+fileName);
-				// String path = getServletContext().getRealPath("") + File.separator +
-				// "/Linkfile/" + fileName;
-				// InputStream is = part.getInputStream();
-				// System.out.println(path);
-				// part.write(path);
-				// part.write(new File("/Eclipse-PythonIDE/Workplace/WebBlogUni/WebContent" +
-				// fileName));
 
+				Part partImage = request.getPart("imageUpload");
+				String imageName = part.getSubmittedFileName();
+				
+				partImage.write("E:\\Eclipse-PythonIDE\\Workplace\\WebBlogUni\\WebContent\\Linkfile\\"+imageName);
 
 				String userName = (String) session.getAttribute("userName");
 				String articleName = request.getParameter("articleName");
 
 				// Bắt Lỗi từ DAO gửi sang BO thông qua String
-				String returnedMessage = addArticleBO.insertProduct(userName, articleName, fileName);
+				String returnedMessage = addArticleBO.insertProduct(userName, articleName, fileName, imageName);
 
 				RequestDispatcher rd = null;
 

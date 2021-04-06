@@ -26,26 +26,34 @@
 <title>Manage</title>
 </head>
 <header>
-	<%-- <jsp:include page="static/fragments/headerInLoginSession.jsp"></jsp:include> --%>
-	<%@ include file="static/fragments/headerCoordinator.html"%>
+	<jsp:include page="static/fragments/headerCoordinator.jsp"></jsp:include>
 </header>
 
 <body>
 	<%
-	ArrayList<Article> listArticle = (ArrayList<Article>)request.getAttribute("publicArticle");
+		if (session.getAttribute("accountInfor") == null) {
+			response.sendRedirect("login.jsp?error=1");
+		} else {
 	%>
+	<%
+		ArrayList<Article> listArticle = (ArrayList<Article>) request.getAttribute("publicArticle");
+	%>
+
 
 	<div class="container">
 		<div class="row">
 			<div class="col">
 				<span
-					style="font-weight: bold; font-size: larger; color: rgb(94, 94, 94);">Manage publish article</span>
+					style="font-weight: bold; font-size: larger; color: rgb(94, 94, 94);">Manage
+					publish article</span>
 			</div>
-			
+
 		</div>
 
 		<!-- Each row of post -->
-		<% for (Article Ar : listArticle) { %>
+		<%
+			for (Article Ar : listArticle) {
+		%>
 		<form action="ManagePublishArticleServlet" method="POST">
 			<div class="row"
 				style="border: 1px solid gray; margin-top: 20px; text-align: center; background: rgb(156, 245, 156);">
@@ -56,14 +64,14 @@
 
 				</div>
 				<div class="col" style="margin-top: 23px;">
-					<span style="font-weight: bold;">ID Student</span><br> <span><%=Ar.getId_Author() %></span>
+					<span style="font-weight: bold;">ID Student</span><br> <span><%=Ar.getId_Author()%></span>
 				</div>
 				<div class="col" style="margin-top: 23px;">
-					<span style="font-weight: bold;">Name</span><br> <span><%=Ar.getArticleName() %></span>
+					<span style="font-weight: bold;">Name</span><br> <span><%=Ar.getArticleName()%></span>
 					<input type="hidden" value="<%=Ar.getid_Articles()%>" name="ArId">
 				</div>
 				<div class="col" style="margin-top: 23px;">
-					<span style="font-weight: bold;">Course</span><br> <span><%=Ar.getId_Faculty() %></span>
+					<span style="font-weight: bold;">Course</span><br> <span><%=Ar.getId_Faculty()%></span>
 				</div>
 
 				<div class="col" style="margin-top: 23px;">
@@ -77,9 +85,13 @@
 				<div class="col" style="margin-top: 35px;"></div>
 			</div>
 		</form>
-		<% } %>
+		<%
+			}
+		%>
 	</div>
-
+	<%
+		}
+	%>
 </body>
 
 <footer>

@@ -9,12 +9,17 @@
 <title>dowload</title>
 </head>
 <body style="position: relative;">
-
+	<%
+		if (session.getAttribute("accountInfor") == null) {
+			response.sendRedirect("login.jsp?error=1");
+		} else {
+	%>
 	<%
 		ArrayList<Article> detailArticle = (ArrayList<Article>) request.getAttribute("detailArticle");
 	%>
+	
 	<%
-			for (Article DeAr : detailArticle) {
+		for (Article DeAr : detailArticle) {
 	%>
 	<object
 		data="${pageContext.request.contextPath}/Linkfile/<%=DeAr.getFileUpload() %>"
@@ -25,7 +30,10 @@
 			file.pdf</a>
 	</object>
 	<%
-			}
+		}
+	%>
+	<%
+		}
 	%>
 </body>
 </html>

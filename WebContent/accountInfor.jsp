@@ -34,9 +34,13 @@
 </header>
 
 <body>
-
 	<%
-		ArrayList<AccountInfor> accInfor = (ArrayList<AccountInfor>)request.getAttribute("AccInfor");
+		if (session.getAttribute("accountInfor") == null) {
+			response.sendRedirect("login.jsp?error=1");
+		} else {
+	%>
+	<%
+		ArrayList<AccountInfor> accInfor = (ArrayList<AccountInfor>) request.getAttribute("AccInfor");
 	%>
 	<%
 		int AmountContribution = (int) request.getAttribute("AmountContribution");
@@ -55,18 +59,19 @@
 								alt="user background">
 						</div>
 						<div class="card-content">
-							<img src="./Linkfile/<%=accInfor.get(0).getAvatar()%>" alt=""
+							<img src="./Linkfile/<%=(String)session.getAttribute("avatar")%>" alt=""
 								class="circle responsive-img activator card-profile-image">
 
-							<span class="card-title activator grey-text text-darken-4" style="font-weight: 800;">
-								Name: <%=accInfor.get(0).getNameUser()%>
+							<span class="card-title activator grey-text text-darken-4"
+								style="font-weight: 800;"> Name: <%=accInfor.get(0).getNameUser()%>
 							</span>
 							<p>
-								<span style="padding-right: 10px; font-weight: 700;">Faculty:</span> <span
-									class="task-cat purple accent-2"><%=accInfor.get(0).getFaculty()%></span>
+								<span style="padding-right: 10px; font-weight: 700;">Faculty:</span>
+								<span class="task-cat purple accent-2"><%=accInfor.get(0).getFaculty()%></span>
 							</p>
 							<p>
-								<span style="padding-right: 22px; font-weight: 700;">Email:</span> <span><%=accInfor.get(0).getEmail()%></span>
+								<span style="padding-right: 22px; font-weight: 700;">Email:</span>
+								<span><%=accInfor.get(0).getEmail()%></span>
 							</p>
 							<p>
 								<span style="font-weight: 700;">Amount Contribution:</span> <span><i
@@ -446,6 +451,8 @@
 	<script
 		src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
 	<script src="./static/js/script.js"></script>
-
+	<%
+		}
+	%>
 </body>
 </html>

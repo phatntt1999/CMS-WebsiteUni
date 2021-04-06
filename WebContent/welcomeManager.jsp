@@ -27,6 +27,7 @@
 
 <title>Manager Home page</title>
 </head>
+
 <header>
 	<%-- <%@ include file="static/fragments/header.html"%> --%>
 	<jsp:include page="static/fragments/headerInLoginSession.jsp"></jsp:include>
@@ -34,8 +35,14 @@
 
 
 <body>
+
 	<%
-		ArrayList<Article> listArticle = (ArrayList<Article>)request.getAttribute("listArticle");
+		ArrayList<Article> listArticle = (ArrayList<Article>) request.getAttribute("listArticle");
+	%>
+	<%
+		if (session.getAttribute("accountInfor") == null) {
+			response.sendRedirect("login.jsp?error=1");
+		} else {
 	%>
 	<div class="container" style="padding-bottom: 30px;">
 		<div class="row"
@@ -71,40 +78,34 @@
 			</div>
 			<div class="carousel-inner" style="text-align: center;">
 				<div class="carousel-item active">
-					<img
-						src="./Linkfile/<%=listArticle.get(0).getArImage()%>"
+					<img src="./Linkfile/<%=listArticle.get(0).getArImage()%>"
 						class="d-block w-100" alt="..."> <a
 						href="ShowDetailArticleServlet?arId=<%=listArticle.get(0).getid_Articles()%>"
 						class="post"><span
 						style="font-size: larger; font-weight: bold; padding-top: 20px;">
 							<%=listArticle.get(0).getArticleName()%>
-					</span></a> <br> <span><%=listArticle.get(0).getDate_upload()%>
-					</span><br> <span><%=listArticle.get(0).getId_Author()%>
-					</span><br>
+					</span></a> <br> <span><%=listArticle.get(0).getDate_upload()%> </span><br>
+					<span><%=listArticle.get(0).getId_Author()%> </span><br>
 				</div>
 				<div class="carousel-item">
-					<img
-						src="./Linkfile/<%=listArticle.get(1).getArImage()%>"
+					<img src="./Linkfile/<%=listArticle.get(1).getArImage()%>"
 						class="d-block w-100" alt="..."> <a
 						href="ShowDetailArticleServlet?arId=<%=listArticle.get(1).getid_Articles()%>"
 						class="post"><span
 						style="font-size: larger; font-weight: bold; padding-top: 20px;">
 							<%=listArticle.get(1).getArticleName()%>
-					</span></a> <br> <span><%=listArticle.get(1).getDate_upload()%>
-					</span><br> <span><%=listArticle.get(1).getId_Author()%>
-					</span><br>
+					</span></a> <br> <span><%=listArticle.get(1).getDate_upload()%> </span><br>
+					<span><%=listArticle.get(1).getId_Author()%> </span><br>
 				</div>
 				<div class="carousel-item">
-					<img
-						src="./Linkfile/<%=listArticle.get(2).getArImage()%>"
+					<img src="./Linkfile/<%=listArticle.get(2).getArImage()%>"
 						class="d-block w-100" alt="..."> <a
 						href="ShowDetailArticleServlet?arId=<%=listArticle.get(2).getid_Articles()%>"
 						class="post"><span
 						style="font-size: larger; font-weight: bold; padding-top: 20px;">
 							<%=listArticle.get(2).getArticleName()%>
-					</span></a> <br> <span><%=listArticle.get(2).getDate_upload()%>
-					</span><br> <span><%=listArticle.get(2).getId_Author()%>
-					</span><br>
+					</span></a> <br> <span><%=listArticle.get(2).getDate_upload()%> </span><br>
+					<span><%=listArticle.get(2).getId_Author()%> </span><br>
 				</div>
 			</div>
 			<button class="carousel-control-prev" type="button"
@@ -167,32 +168,38 @@
 					}
 				%> --%>
 
-			<div class="container" style="display: flex; align-items:flex-start; flex-flow: row wrap;">
-				<% for (Article Ar : listArticle) { %>
+			<div class="container"
+				style="display: flex; align-items: flex-start; flex-flow: row wrap;">
+				<%
+					for (Article Ar : listArticle) {
+				%>
 				<div class="box" style="align-self: flex-start;">
 					<a href="ShowDetailArticleServlet?arId=<%=Ar.getid_Articles()%>"
-						class="post"> <img src="./Linkfile/<%=Ar.getArImage()%>" alt=""
-						class="post-image">
-					</a><br> 
-					<a href="ShowDetailArticleServlet?arId=<%=Ar.getid_Articles()%>"
-						class="post">
-						<span style="font-size: larger; font-weight: bold;"><%=Ar.getArticleName()%></span></a><br>
-					<span>Date Upload: <%=Ar.getDate_upload()%></span><br> 
-					<img
-						src="./Linkfile/<%=Ar.getAvatarUser()%>" alt="" class="avatar-image"> <span
-						class="author-text">Author: <%=Ar.getId_Author()%></span><br> </a>
+						class="post"> <img src="./Linkfile/<%=Ar.getArImage()%>"
+						alt="" class="post-image">
+					</a><br> <a
+						href="ShowDetailArticleServlet?arId=<%=Ar.getid_Articles()%>"
+						class="post"> <span
+						style="font-size: larger; font-weight: bold;"><%=Ar.getArticleName()%></span></a><br>
+					<span>Date Upload: <%=Ar.getDate_upload()%></span><br> <img
+						src="./Linkfile/<%=Ar.getAvatarUser()%>" alt=""
+						class="avatar-image"> <span class="author-text">Author:
+						<%=Ar.getId_Author()%></span><br> </a>
 				</div>
 				<%
 					}
 				%>
 			</div>
 			<%-- Close for loop --%>
-			
+
 			<%-- //End Logic handling show product list --%>
 		</div>
 
 	</div>
-	</div>
+
+	<%
+		}
+	%>
 </body>
 
 <jsp:include page="static/fragments/footerLogin.jsp"></jsp:include>

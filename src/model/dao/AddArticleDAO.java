@@ -58,10 +58,10 @@ public class AddArticleDAO extends BaseDAO {
 	}
 
 	public String insertArticle(String lastestId_Article, String articleName, String id_Faculty, String id_Author,
-			String id_Coordinator, boolean published, boolean isNow, String fileUpload, boolean statusComment) {
+			String id_Coordinator, boolean published, boolean isNow, String fileUpload, boolean statusComment, String imageName) {
 		Connection connection = getConnection();
 		String sql = "INSERT INTO Articles (id_Articles,ArticleName,id_Faculty"
-				+ ",id_Author, id_Coordinator, Published, isNow, FileUpload, StatusComment) VALUES (?,?,?,?,?,?,?,?,?)";
+				+ ",id_Author, id_Coordinator, Published, isNow, FileUpload, StatusComment, ArticleImage) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
 		PreparedStatement pstmt = null;
 
@@ -76,6 +76,7 @@ public class AddArticleDAO extends BaseDAO {
 			pstmt.setBoolean(7, isNow);
 			pstmt.setString(8, fileUpload);
 			pstmt.setBoolean(9, statusComment);
+			pstmt.setString(10, imageName);
 			
 
 			int x = pstmt.executeUpdate();

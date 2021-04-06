@@ -36,6 +36,11 @@
 	<%
 		ArrayList<Article> listArticle = (ArrayList<Article>) request.getAttribute("listArticleUser");
 	%>
+	<%
+		if (session.getAttribute("accountInfor") == null) {
+			response.sendRedirect("login.jsp?error=1");
+		} else {
+	%>
 	<div class="container" style="padding-bottom: 30px;">
 		<div class="row"
 			style="background-color: rgb(191, 225, 248); padding: 70px;">
@@ -166,7 +171,7 @@
 		</div>
 
 	</div>
-
+<%} %>
 </body>
 
 <jsp:include page="static/fragments/footerLogin.jsp"></jsp:include>

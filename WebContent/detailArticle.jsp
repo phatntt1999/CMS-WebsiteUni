@@ -30,13 +30,18 @@
 		String Message = request.getParameter("message");
 	%>
 	<%=("1".equals(Message)) ? "Post comment succesful" : "Unknown error"%> --%>
-
+	<%
+		if (session.getAttribute("accountInfor") == null) {
+			response.sendRedirect("login.jsp?error=1");
+		} else {
+	%>
 	<%
 		ArrayList<Comment> comment = (ArrayList<Comment>) request.getAttribute("listComment");
 	%>
 	<%
 		ArrayList<Article> detailArticle = (ArrayList<Article>) request.getAttribute("detailArticle");
 	%>
+
 	<%
 		for (Article DeAr : detailArticle) {
 	%>
@@ -54,13 +59,13 @@
 		<div class="col-8">
 
 			<h1 style="margin-top: 20px; font-weight: bold;"><%=DeAr.getArticleName()%></h1>
-			<img src="./Linkfile/<%=DeAr.getAvatarUser()%>" alt="" class="avatar-image">
-			<span class="author-text"><%=DeAr.getId_Author()%></span> <span>
-				- </span> <span class="author-text"><%=DeAr.getDate_upload()%></span>
+			<img src="./Linkfile/<%=DeAr.getAvatarUser()%>" alt=""
+				class="avatar-image"> <span class="author-text"><%=DeAr.getId_Author()%></span>
+			<span> - </span> <span class="author-text"><%=DeAr.getDate_upload()%></span>
 			<object
 				data="${pageContext.request.contextPath}/Linkfile/<%=DeAr.getFileUpload()%>"
 				type="application/pdf" style="width: 100%; height: 700px">
-				
+
 			</object>
 
 			<!--bài viết của người dùng để vào đây hen -->
@@ -74,8 +79,9 @@
 		<div class="col-3"></div>
 		<div class="col-6">
 			<hr>
-			<img src="./Linkfile/<%=(String)session.getAttribute("avatar")%>" alt="" class="avatar-image">
-			<span class="author-text" style=""><%=(String)session.getAttribute("userName")%></span>
+			<img src="./Linkfile/<%=(String) session.getAttribute("avatar")%>"
+				alt="" class="avatar-image"> <span class="author-text"
+				style=""><%=(String) session.getAttribute("userName")%></span>
 
 			<!--bài viết của người dùng để vào đây hen -->
 			<h5>
@@ -161,8 +167,8 @@
 							<h5 class="comment-name">
 								<a><%=cm.getid_Author()%></a>
 							</h5>
-							<span><%=cm.getDateComment()%></span>
-							<i class="fa fa-reply"></i> <i class="fa fa-heart"></i>
+							<span><%=cm.getDateComment()%></span> <i class="fa fa-reply"></i>
+							<i class="fa fa-heart"></i>
 						</div>
 						<div class="comment-content">
 							<%=cm.getContentComment()%>
@@ -185,7 +191,9 @@
 		<br>
 		<hr>
 	</div>
-
+	<%
+		}
+	%>
 </body>
 <footer>
 	<jsp:include page="static/fragments/footerLogin.jsp"></jsp:include>
