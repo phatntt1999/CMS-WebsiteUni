@@ -13,6 +13,7 @@ public class Article {
 	private String FileUpload;
 	private String ArImage;
 	private String AvatarUser;
+	private int CountHeart;
 	
 	public String getid_Articles() {
 		return id_Articles;
@@ -88,7 +89,13 @@ public class Article {
 	public void setAvatarUser(String avatarUser) {
 		AvatarUser = avatarUser;
 	}
-
+	public int getCountHeart() {
+		return CountHeart;
+	}
+	public void setCountHeart(int countHeart) {
+		CountHeart = countHeart;
+	}
+	
 	
 	
 	

@@ -20,22 +20,29 @@
   margin: -10px -10px -10px -10px;
 }
 .text {
-  font-size: 11px;
+  font-size: 13px;
   margin-top: 2.5px;
   margin-left: 2px;
   color: grey;
   font-family: "Montserrat", sans-serif;
 }
+.numb{
+	 font-size: 13px;
+  margin-top: 2.5px;
+  margin-left: 4px;
+  color: grey;
+  font-family: "Montserrat", sans-serif;
+}
 .numb:before {
-  content: "12";
-  font-size: 11px;
+ 
+  font-size: 10px;
   margin-left: 6px;
   font-weight: 600;
   color: #9c9496;
-  font-family: sans-serif;
+ 
 }
 .numb.heart-active:before {
-  content: "13";
+ 
   color: #000;
 }
 .text.heart-active {

@@ -16,6 +16,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="static/css/homepage.css">
+<link rel="stylesheet" href="static/css/heart.css">
 <script src="bootstrap.min.js"></script>
 <script src="static/js/welcome.js"></script>
 <link rel="stylesheet" href="static/css/DetailArticle.css">
@@ -62,6 +63,48 @@
 			<img src="./Linkfile/<%=DeAr.getAvatarUser()%>" alt=""
 				class="avatar-image"> <span class="author-text"><%=DeAr.getId_Author()%></span>
 			<span> - </span> <span class="author-text"><%=DeAr.getDate_upload()%></span>
+			<% boolean x = (boolean)request.getAttribute("heartstatus") ; %>
+				<% if( x == false){ %>
+				<button class="content 1 ">
+				<!-- <div class="content 1 "> -->
+						<span class="heart 1 "></span> 
+						<span class="text 1">Like</span> 
+						<span class="numb 2 "><%=DeAr.getCountHeart()%></span>
+						
+				<!-- 	</div> -->
+					<!-- </a> -->
+					</button>
+					<%} else{ %>
+					<button class="content 1 heart-active">
+				<!-- <div class="content 1 "> -->
+						<span class="heart 1 heart-active"></span> 
+						<span class="text 1 heart-active">Like</span> 
+						<span class="numb 2 heart-active"> <%=DeAr.getCountHeart()%></span>
+						
+				<!-- 	</div> -->
+					<!-- </a> -->
+					</button>
+					<%} %>
+					<script>
+					 $(document).ready(function(){
+					$('.content').click(function(){
+			        	var  auId = '<%=(String)session.getAttribute("userName")%>';
+			        	var arId = '<%=DeAr.getid_Articles()%>' ;
+			        	
+			        	$.ajax({
+							type:'POST',
+							url:'/WebBlogUni/HeartServlet',
+							data:{arId: arId,
+								auId: auId },
+			        	success: function(result){
+			        		$('.numb').html(result);
+			        	}
+						});
+			        	
+			          $('.1').toggleClass("heart-active");
+			          $('.2').toggleClass("heart-active");
+			          }); 
+        }); </script>
 			<object
 				data="${pageContext.request.contextPath}/Linkfile/<%=DeAr.getFileUpload()%>"
 				type="application/pdf" style="width: 100%; height: 700px">

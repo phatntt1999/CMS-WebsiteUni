@@ -78,7 +78,7 @@
 			</div>
 			<div class="carousel-inner" style="text-align: center;">
 				<div class="carousel-item active">
-					<img src="./Linkfile/<%=listArticle.get(0).getArImage()%>"
+					<img height=600px src="./Linkfile/<%=listArticle.get(0).getArImage()%>"
 						class="d-block w-100" alt="..."> <a
 						href="ShowDetailArticleServlet?arId=<%=listArticle.get(0).getid_Articles()%>"
 						class="post"><span
@@ -89,7 +89,7 @@
 				</div>
 				<div class="carousel-item">
 					<img src="./Linkfile/<%=listArticle.get(1).getArImage()%>"
-						class="d-block w-100" alt="..."> <a
+						class="d-block w-100" alt="..." height=600px> <a
 						href="ShowDetailArticleServlet?arId=<%=listArticle.get(1).getid_Articles()%>"
 						class="post"><span
 						style="font-size: larger; font-weight: bold; padding-top: 20px;">
@@ -99,7 +99,7 @@
 				</div>
 				<div class="carousel-item">
 					<img src="./Linkfile/<%=listArticle.get(2).getArImage()%>"
-						class="d-block w-100" alt="..."> <a
+						class="d-block w-100" alt="..." height=600px> <a
 						href="ShowDetailArticleServlet?arId=<%=listArticle.get(2).getid_Articles()%>"
 						class="post"><span
 						style="font-size: larger; font-weight: bold; padding-top: 20px;">

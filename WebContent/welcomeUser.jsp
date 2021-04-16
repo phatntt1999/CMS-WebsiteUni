@@ -128,11 +128,11 @@
 				%>
 
 				<div class="box">
-					<a href="ShowDetailArticleServlet?arId=<%=Ar.getid_Articles()%>"
+					<a href="ShowDetailArticleServlet?arId=<%=Ar.getid_Articles()%>&&auId=<%=(String)session.getAttribute("userName")%>"
 						class="post"> <img src="./Linkfile/<%=Ar.getArImage()%>"
 						alt="" class="post-image">
 					</a><br> <a
-						href="ShowDetailArticleServlet?arId=<%=Ar.getid_Articles()%>"
+						href="ShowDetailArticleServlet?arId=<%=Ar.getid_Articles()%>&&auId=<%=(String)session.getAttribute("userName")%>"
 						class="post"> <span
 						style="font-size: larger; font-weight: bold;"><%=Ar.getArticleName()%></span></a><br>
 					<span>Date Upload: <%=Ar.getDate_upload()%></span><br> <img

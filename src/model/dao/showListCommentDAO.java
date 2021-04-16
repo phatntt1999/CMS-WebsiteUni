@@ -109,6 +109,7 @@ public class showListCommentDAO extends BaseDAO {
 				item.setFileUpload(rs.getString("FileUpload"));
 				item.setAvatarUser(rs.getString("Avatar"));
 				item.setArImage(rs.getString("ArticleImage"));
+				item.setCountHeart(CountHeart(arId));
 				returnedList.add(item);
 			}
 		} catch (SQLException e) {
@@ -120,5 +121,26 @@ public class showListCommentDAO extends BaseDAO {
 
 		return returnedList; // invalid account
 	}
-
+	public int CountHeart(String arId) {
+		int countHeart = 0;
+		Connection connection = getConnection();
+		String sql = "Select Count(StatusLike) as X from Favorite Where id_Articles=?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, arId);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				countHeart= rs.getInt("X");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConnection(connection, pstmt, rs);
+		}
+		return countHeart;
+	}
 }

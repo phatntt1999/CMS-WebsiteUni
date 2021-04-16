@@ -16,6 +16,11 @@
 	color: white;
 }
 
+#welcome-txt{
+	text-decoration: none;
+	color: black;	
+}
+
 #search-input {
 	width: 23%;
 	border: 0px;

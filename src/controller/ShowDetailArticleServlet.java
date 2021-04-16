@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import model.bean.Comment;
 import model.bean.Article;
+import model.bo.HeartBO;
 import model.bo.showListCommentBO;
 
 /**
@@ -49,10 +50,12 @@ public class ShowDetailArticleServlet extends HttpServlet {
 		response.setCharacterEncoding("text/html; charset=UTF-8");
 
 		HttpSession session = request.getSession();
-
+String auId = request.getParameter("auId");
 		String arId = request.getParameter("arId");
 		showListCommentBO showCommentBO = new showListCommentBO();
-
+		HeartBO heartBO = new HeartBO();
+		boolean Heartstatus=heartBO.StatusHeart(auId,arId);
+		 request.setAttribute("heartstatus", Heartstatus);
 		ArrayList<Article> detailArticle = showCommentBO.GetDetailArticle(arId);
 		request.setAttribute("detailArticle", detailArticle);
 

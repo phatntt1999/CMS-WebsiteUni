@@ -23,7 +23,21 @@
 	integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG"
 	crossorigin="anonymous"></script>
 </head>
+<style>
+#logout {
+	border: 1px solid;
+	border-radius: 5px;
+	padding: 5px 15px 5px 15px;
+	margin-left: 10px;
+	background: white;
+	color: black;
+}
 
+#logout:hover {
+	background: rgb(33, 155, 255);
+	color: white;
+}
+</style>
 <header>
 	<div class="container">
 		<div class="row">
@@ -34,17 +48,22 @@
 				</a>
 			</div>
 			<div class="col" style="text-align: right; margin-top: 20px;">
-				<a
+				<a style="text-decoration: none;"
 					href="ShowAccountInforServlet?AccId=<%=(String)session.getAttribute("userName")%>">
-					<span style="margin-left: 10px"><%=(String)session.getAttribute("accountInfor")%></span>
+
+					<span id="welcome-txt"
+					style="margin-left: 10px; color: black; font-weight: bold;"><%=(String)session.getAttribute("accountInfor")%></span>
+
+
 				</a> <img src="./Linkfile/<%=(String)session.getAttribute("avatar")%>"
 					width=70px alt="" id="role-avatar">
 				<!-- <a href="LogoutServlet"><button
 						id="logout">Logout</button></a> -->
-				<input id="logout"
+				<!-- <input id="logout"
 					style="border: 1px solid; border-radius: 5px; padding: 5px 15px 5px 15px; margin-left: 10px; background: white; color: black;"
 					type="button" onclick="location.href='LogoutServlet'"
-					value="Logout" />
+					value="Logout" /> -->
+				<button id="logout" onclick="location.href='LogoutServlet'" value="Logout">Log out</button>
 				<button id="add-post">New Contribution</button>
 			</div>
 		</div>
@@ -71,7 +90,6 @@
 						onclick="location.href='SendMailServlet?accId=<%=session.getAttribute("account")%>';"
 						value="Submit"> <input id="close" type="reset"
 						value="Cancel">
-
 				</div>
 			</form>
 
