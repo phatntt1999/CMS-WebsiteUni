@@ -69,7 +69,7 @@ public class AddingArticleServlet extends HttpServlet {
 				part.write("E:\\Eclipse-PythonIDE\\Workplace\\WebBlogUni\\WebContent\\Linkfile\\"+fileName);
 
 				Part partImage = request.getPart("imageUpload");
-				String imageName = part.getSubmittedFileName();
+				String imageName = partImage.getSubmittedFileName();
 				
 				partImage.write("E:\\Eclipse-PythonIDE\\Workplace\\WebBlogUni\\WebContent\\Linkfile\\"+imageName);
 

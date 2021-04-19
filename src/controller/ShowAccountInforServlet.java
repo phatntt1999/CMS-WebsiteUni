@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import model.bean.AccountInfor;
 import model.bo.ShowAccountInforBO;
+import model.dao.showListCommentDAO;
 
 
 /**
@@ -44,6 +45,7 @@ public class ShowAccountInforServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+		showListCommentDAO countHeart = new showListCommentDAO();
 		
 		HttpSession session = request.getSession();
 		

@@ -2,6 +2,7 @@ package model.bean;
 
 public class AccountInfor {
 	private String NameUser;
+	private String Id_Articles;
 	private String Email;
 	private String Faculty;
 	private String Avatar;
@@ -51,6 +52,12 @@ public class AccountInfor {
 	}
 	public void getPublished(boolean published) {
 		Published = published;
+	}
+	public String getId_Articles() {
+		return Id_Articles;
+	}
+	public void setId_Articles(String id_Articles) {
+		Id_Articles = id_Articles;
 	}
 	
 	

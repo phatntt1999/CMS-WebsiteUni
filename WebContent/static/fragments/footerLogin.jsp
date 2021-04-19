@@ -23,16 +23,16 @@
 					width="40%">
 			</div>
 			<div class="col">
-				<span>Footer Column</span><br> <span>Footer Column</span><br>
-				<span>Footer Column</span>
+				<span>Home</span><br> <span>Contact</span><br>
+				<span>About</span>
 			</div>
 			<div class="col">
-				<span>Footer Column</span><br> <span>Footer Column</span><br>
-				<span>Footer Column</span>
+				<span>Business</span><br> <span>IT</span><br>
+				<span>Design</span>
 			</div>
 			<div class="col">
-				<span>Footer Column</span><br> <span>Footer Column</span><br>
-				<span>Footer Column</span>
+				<span>For partners</span><br> <span>Resources</span><br>
+				<span>Customers</span>
 			</div>
 		</div>
 		<hr>

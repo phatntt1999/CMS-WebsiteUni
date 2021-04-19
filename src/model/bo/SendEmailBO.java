@@ -44,8 +44,12 @@ public class SendEmailBO {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(myAccountEmail));
 			message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
-			message.setSubject("WTF");
-			message.setText("game là dễ");
+			message.setSubject("You have submitted your Article Contribution submission for Greenwich Blog");
+			message.setText("You have submitted an assignment submission for 'Literature review and Product research'.\r\n" + 
+					"\r\n" + 
+					"You can see the status of your Contribution in your homepage.\r\n" + 
+					"\r\n" + 
+					"This is automation Email. Do not try to reply this email.");
 			return message;
 		} catch (Exception ex) {
 			// TODO Auto-generated catch block

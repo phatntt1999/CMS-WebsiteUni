@@ -128,17 +128,18 @@
 				%>
 
 				<div class="box">
-					<a href="ShowDetailArticleServlet?arId=<%=Ar.getid_Articles()%>&&auId=<%=(String)session.getAttribute("userName")%>"
+					<a
+						href="ShowDetailArticleServlet?arId=<%=Ar.getid_Articles()%>&&auId=<%=(String) session.getAttribute("userName")%>"
 						class="post"> <img src="./Linkfile/<%=Ar.getArImage()%>"
 						alt="" class="post-image">
 					</a><br> <a
-						href="ShowDetailArticleServlet?arId=<%=Ar.getid_Articles()%>&&auId=<%=(String)session.getAttribute("userName")%>"
+						href="ShowDetailArticleServlet?arId=<%=Ar.getid_Articles()%>&&auId=<%=(String) session.getAttribute("userName")%>"
 						class="post"> <span
 						style="font-size: larger; font-weight: bold;"><%=Ar.getArticleName()%></span></a><br>
 					<span>Date Upload: <%=Ar.getDate_upload()%></span><br> <img
-						src="./Linkfile/<%=Ar.getAvatarUser()%>" alt="" class="avatar-image">
-					<span class="author-text">Author: <%=Ar.getId_Author()%></span><br>
-					</a>
+						src="./Linkfile/<%=Ar.getAvatarUser()%>" alt=""
+						class="avatar-image"> <span class="author-text">Author:
+						<%=Ar.getId_Author()%></span><br> </a>
 
 					<div class="content" id="<%=Ar.getid_Articles()%>">
 						<span class="heart <%=Ar.getid_Articles()%>"></span> <span
@@ -154,10 +155,13 @@
           $('.content .<%=Ar.getid_Articles()%>').toggleClass("heart-active")
           $('.text .<%=Ar.getid_Articles()%>').toggleClass("heart-active")
           $('.numb .<%=Ar.getid_Articles()%>').toggleClass("heart-active")
-          $('.heart .<%=Ar.getid_Articles()%>').toggleClass("heart-active")
-        });
-      });
-    </script>
+          $('.heart .<%=Ar.getid_Articles()%>
+						')
+																		.toggleClass(
+																				"heart-active")
+															});
+										});
+					</script>
 
 				</div>
 
@@ -171,7 +175,9 @@
 		</div>
 
 	</div>
-<%} %>
+	<%
+		}
+	%>
 </body>
 
 <jsp:include page="static/fragments/footerLogin.jsp"></jsp:include>

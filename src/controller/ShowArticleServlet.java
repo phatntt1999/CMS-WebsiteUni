@@ -63,10 +63,12 @@ public class ShowArticleServlet extends HttpServlet {
 			String departUser = checkLoginBO.getDepartUser(userName);
 			ArrayList<Article> listArticleUser = showProductListBO.getListArticleUser(departUser);
 			ArrayList<Article> listArticle = showProductListBO.getListArticle();
+			ArrayList<Article> listArticleAdmin = showProductListBO.getListArticleAdmin();
 			RequestDispatcher rd = null;
 			
 			if(role == 1)	{
-				rd = request.getRequestDispatcher("welcomeAdmin.jsp");
+				request.setAttribute("listArticle", listArticleAdmin);
+				rd = request.getRequestDispatcher("showListAdmin.jsp");
 			} //Admin role
 			else if (role == 2){
 				request.setAttribute("listArticle", listArticle);

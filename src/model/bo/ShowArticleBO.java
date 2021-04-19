@@ -18,4 +18,9 @@ public class ShowArticleBO {
 		return showArticleDAO.getListArticleUser(departUser);
 	}
 
+	public ArrayList<Article> getListArticleAdmin() {
+		// TODO Auto-generated method stub
+		return showArticleDAO.getListArticleAdmin();
+	}
+
 }

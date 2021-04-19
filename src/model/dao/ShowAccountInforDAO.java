@@ -30,6 +30,7 @@ public class ShowAccountInforDAO extends BaseDAO{
 
 			while (rs.next()) {
 				item = new AccountInfor();
+				item.setId_Articles(rs.getString("id_Articles"));
 				item.setNameUser(rs.getString("NameUser"));
 				item.setEmail(rs.getString("Email"));
 				item.setFaculty(rs.getString("Department"));

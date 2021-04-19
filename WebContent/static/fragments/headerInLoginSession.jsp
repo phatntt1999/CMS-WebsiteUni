@@ -79,15 +79,16 @@
 							name="articleName" id="articleName" class="title-input"><br>
 					</div>
 					<span style="font-weight: bold;">PDF Upload:</span> <input
-						id="choose-file" type="file" name="fileUpload" /><br> <span
+						id="choose-file" type="file" name="fileUpload" /><br> 
+					<span
 						style="font-weight: bold;">Image Upload:</span> <input
 						id="choose-file" type="file" name="imageUpload" /><br>
 					<!-- <span style="margin-left: 15px;">File Name</span><br>
 					<button id="submit">Submit</button>
 					<button id="close">Close</button> -->
 					<!-- <input id="submit" type="submit" value="Submit">  -->
-					<input id="submit" type="submit"
-						onclick="location.href='SendMailServlet?accId=<%=session.getAttribute("account")%>';"
+					<input id="submit" type="submit" 
+						onclick= "location.href='SendMailServlet?accId=<%=session.getAttribute("userName")%>';"
 						value="Submit"> <input id="close" type="reset"
 						value="Cancel">
 				</div>
@@ -116,6 +117,12 @@
 			$("#add-new-contribution").hide();
 		})
 	})
+/* 	function checkAr(account)
+	{
+		if(confirm('Are you sure?')){
+			location.href='SendMailServlet?accId='+account;
+		}
+	} */
 </script>
 </html>
 

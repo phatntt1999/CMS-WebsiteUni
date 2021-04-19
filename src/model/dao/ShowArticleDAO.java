@@ -83,4 +83,39 @@ public class ShowArticleDAO extends BaseDAO {
 		return returnedList; // invalid account
 	}
 
+	public ArrayList<Article> getListArticleAdmin() {
+		ArrayList<Article> returnedList = new ArrayList<Article>(); // Khoi tao ArrayList Article
+
+		Connection connection = getConnection();
+		String sql = "SELECT * from Articles ORDER BY id_Faculty DESC";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = connection.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			Article item = null;
+
+			while (rs.next()) {
+				item = new Article();
+				item.setid_Articles(rs.getString("id_Articles"));
+				item.setArticleName(rs.getString("ArticleName"));
+				item.setId_Faculty(rs.getString("id_Faculty"));
+				item.setDate_upload(rs.getString("Date_upload"));
+				item.setId_Author(rs.getString("id_Author"));
+				item.setFileUpload(rs.getString("FileUpload"));
+				item.setArImage(rs.getString("ArticleImage"));
+
+				returnedList.add(item);
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConnection(connection, pstmt, rs);
+		}
+		return returnedList; // invalid account
+	}
+
 }

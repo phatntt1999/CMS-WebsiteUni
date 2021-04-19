@@ -22,9 +22,7 @@ public class SendEmailDAO extends BaseDAO {
 			while(rs.next()) {
 								
 				Email= rs.getString("Email");
-				
-				
-				
+
 			}
 		}catch (SQLException e) {
 			// TODO Auto-generated catch block

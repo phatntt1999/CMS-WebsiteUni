@@ -171,9 +171,9 @@
 			<%
 				} else {
 			%>
-			<h2><%=session.getAttribute("checkday")%></h2>
-			<h2><%=DeAr.getStatusComment()%></h2>
-			<h5>ko comment duoc nua ban oi</h5>
+			<%-- <h2><%=session.getAttribute("checkday")%></h2>
+			<h2><%=DeAr.getStatusComment()%></h2> --%>
+			<h5>Comment is no longer available (Time-expired).</h5>
 			<%
 				}
 			%>

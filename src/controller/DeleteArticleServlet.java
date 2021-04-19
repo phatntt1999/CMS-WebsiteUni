@@ -39,9 +39,10 @@ public class DeleteArticleServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		String arId = request.getParameter("arId");
+		String arId = request.getParameter("ArId");
 		
 		DeleteArticleBO deleteProductBO = new DeleteArticleBO();
+		deleteProductBO.deleteCommentOfProduct(arId);
 		deleteProductBO.deleteProduct(arId);
 		
 		response.sendRedirect("ShowArticleServlet?message=1");

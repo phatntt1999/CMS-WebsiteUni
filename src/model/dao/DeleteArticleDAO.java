@@ -13,7 +13,7 @@ public class DeleteArticleDAO extends BaseDAO{
 		
 		try {
 			pstmt = connection.prepareStatement(sql);
-			pstmt.setString(1,arId);
+			pstmt.setString(1, arId);
 			pstmt.executeUpdate();
 		}
 		catch (SQLException e) {
@@ -22,7 +22,23 @@ public class DeleteArticleDAO extends BaseDAO{
 		} finally {
 			closeConnection(connection, pstmt, null);
 		}
-		
 	}
 
+	public void deleteCommentOfProduct(String arId) {
+		Connection connection = getConnection();
+		String sql = "DELETE FROM Comment WHERE id_Articles = ?";
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, arId);
+			pstmt.executeUpdate();
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConnection(connection, pstmt, null);
+		}
+	}
 }

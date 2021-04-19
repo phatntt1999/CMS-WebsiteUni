@@ -1,6 +1,8 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="model.bean.AccountInfor"%>
 
+<%@ page import="java.util.Random"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -41,9 +43,11 @@
 	%>
 	<%
 		ArrayList<AccountInfor> accInfor = (ArrayList<AccountInfor>) request.getAttribute("AccInfor");
+	
 	%>
 	<%
 		int AmountContribution = (int) request.getAttribute("AmountContribution");
+		Random generator = new Random();
 	%>
 
 	<!--start container-->
@@ -158,9 +162,12 @@
 					class="collection-header">Issues</span>
 					<p>Assigned to you</p> <a href="#" class="secondary-content"><i
 						class="mdi-action-grade"></i></a></li>
+				<% int count = 0; %>
 				<%
 					for (AccountInfor accInf : accInfor) {
 				%>
+				
+				
 				<li class="collection-item">
 					<div class="row">
 						<div class="col s5">
@@ -188,11 +195,12 @@
 						</div>
 						<div class="col s2">
 							<br> <i class="fa fa-heart"
-								style="color: #ed2553; font-size: 25px;"> 25 </i>
+								style="color: #ed2553; font-size: 25px;"> 0 </i>
 						</div>
 					</div>
 				</li>
-
+				<% count = count + generator.nextInt(3) + 1; %>
+				
 				<%
 					}
 				%>
